@@ -3,7 +3,7 @@ pragma solidity 0.8;
 
 struct NFTMeta {
     uint256[] other_data;
-    uint256[] leyers;
+    uint256[] layers;
     string base_serial;
     IRakugakiLayers layers_database;
     ISVGGenerator generator;
@@ -15,7 +15,7 @@ struct RakugakiLayer {
 }
 
 interface IRakugakiLayers {
-    function getLayer (uint256) external returns (RakugakiLayer memory);
+    function getLayer (uint256) external view returns (RakugakiLayer memory);
 }
 
 interface ISVGGenerator {

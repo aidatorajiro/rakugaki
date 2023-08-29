@@ -16,7 +16,7 @@
 							},
 							{
 								"internalType": "uint256[]",
-								"name": "leyers",
+								"name": "layers",
 								"type": "uint256[]"
 							},
 							{
@@ -80,11 +80,11 @@
 	},
 	"sources": {
 		"defs.sol": {
-			"keccak256": "0x1edc1ec24df6b37a30ebaf8c3ce7dfae8ff0d4cd8c5eac2b70aa08295925928a",
+			"keccak256": "0x36cb88d52d63fabcec797c2d70ad8071a04a31c1466035cce9b7b894d4ce9efb",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://857a95a7e8514bcb2d0921a017680b6d9f166d1a2caa4814f5057cb67190b3f4",
-				"dweb:/ipfs/QmTtqMEhqkjvB8jhqx7QtJRfmPe9WeAjr9qnAVQ9GdMo5P"
+				"bzz-raw://26a76e60b7efa1c6d89eedb457b69cb6caacd9c6f21f363920d92cf90c24f176",
+				"dweb:/ipfs/QmfCQXn64q681WNzyQ1AduM8DztACbbDiBEbWBWMhE7WK1"
 			]
 		}
 	},

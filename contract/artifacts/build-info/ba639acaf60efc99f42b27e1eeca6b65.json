@@ -1,5 +1,5 @@
 {
-	"id": "37132657eee80d0dbb572deecaa0ed4f",
+	"id": "ba639acaf60efc99f42b27e1eeca6b65",
 	"_format": "hh-sol-build-info-1",
 	"solcVersion": "0.8.18",
 	"solcLongVersion": "0.8.18+commit.87f61d96",
@@ -7,7 +7,7 @@
 		"language": "Solidity",
 		"sources": {
 			"defs.sol": {
-				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.8;\r\n\r\nstruct NFTMeta {\r\n    uint256[] other_data;\r\n    uint256[] leyers;\r\n    string base_serial;\r\n    IRakugakiLayers layers_database;\r\n    ISVGGenerator generator;\r\n}\r\n\r\nstruct RakugakiLayer {\r\n    string image;\r\n    uint256 timestamp;\r\n}\r\n\r\ninterface IRakugakiLayers {\r\n    function getLayer (uint256) external returns (RakugakiLayer memory);\r\n}\r\n\r\ninterface ISVGGenerator {\r\n    function generate (NFTMeta memory meta) external view returns (string memory);\r\n}"
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.8;\r\n\r\nstruct NFTMeta {\r\n    uint256[] other_data;\r\n    uint256[] layers;\r\n    string base_serial;\r\n    IRakugakiLayers layers_database;\r\n    ISVGGenerator generator;\r\n}\r\n\r\nstruct RakugakiLayer {\r\n    string image;\r\n    uint256 timestamp;\r\n}\r\n\r\ninterface IRakugakiLayers {\r\n    function getLayer (uint256) external view returns (RakugakiLayer memory);\r\n}\r\n\r\ninterface ISVGGenerator {\r\n    function generate (NFTMeta memory meta) external view returns (string memory);\r\n}"
 			}
 		},
 		"settings": {
@@ -70,7 +70,7 @@
 									"type": "tuple"
 								}
 							],
-							"stateMutability": "nonpayable",
+							"stateMutability": "view",
 							"type": "function"
 						}
 					],
@@ -104,7 +104,7 @@
 							"getLayer(uint256)": "f781e3ae"
 						}
 					},
-					"metadata": "{\"compiler\":{\"version\":\"0.8.18+commit.87f61d96\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getLayer\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"image\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"internalType\":\"struct RakugakiLayer\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"defs.sol\":\"IRakugakiLayers\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"defs.sol\":{\"keccak256\":\"0x1edc1ec24df6b37a30ebaf8c3ce7dfae8ff0d4cd8c5eac2b70aa08295925928a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://857a95a7e8514bcb2d0921a017680b6d9f166d1a2caa4814f5057cb67190b3f4\",\"dweb:/ipfs/QmTtqMEhqkjvB8jhqx7QtJRfmPe9WeAjr9qnAVQ9GdMo5P\"]}},\"version\":1}",
+					"metadata": "{\"compiler\":{\"version\":\"0.8.18+commit.87f61d96\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getLayer\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"image\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"internalType\":\"struct RakugakiLayer\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"defs.sol\":\"IRakugakiLayers\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"defs.sol\":{\"keccak256\":\"0x36cb88d52d63fabcec797c2d70ad8071a04a31c1466035cce9b7b894d4ce9efb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://26a76e60b7efa1c6d89eedb457b69cb6caacd9c6f21f363920d92cf90c24f176\",\"dweb:/ipfs/QmfCQXn64q681WNzyQ1AduM8DztACbbDiBEbWBWMhE7WK1\"]}},\"version\":1}",
 					"storageLayout": {
 						"storage": [],
 						"types": null
@@ -128,7 +128,7 @@
 										},
 										{
 											"internalType": "uint256[]",
-											"name": "leyers",
+											"name": "layers",
 											"type": "uint256[]"
 										},
 										{
@@ -194,7 +194,7 @@
 							"generate((uint256[],uint256[],string,address,address))": "6cf285c8"
 						}
 					},
-					"metadata": "{\"compiler\":{\"version\":\"0.8.18+commit.87f61d96\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"uint256[]\",\"name\":\"other_data\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"leyers\",\"type\":\"uint256[]\"},{\"internalType\":\"string\",\"name\":\"base_serial\",\"type\":\"string\"},{\"internalType\":\"contract IRakugakiLayers\",\"name\":\"layers_database\",\"type\":\"address\"},{\"internalType\":\"contract ISVGGenerator\",\"name\":\"generator\",\"type\":\"address\"}],\"internalType\":\"struct NFTMeta\",\"name\":\"meta\",\"type\":\"tuple\"}],\"name\":\"generate\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"defs.sol\":\"ISVGGenerator\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"defs.sol\":{\"keccak256\":\"0x1edc1ec24df6b37a30ebaf8c3ce7dfae8ff0d4cd8c5eac2b70aa08295925928a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://857a95a7e8514bcb2d0921a017680b6d9f166d1a2caa4814f5057cb67190b3f4\",\"dweb:/ipfs/QmTtqMEhqkjvB8jhqx7QtJRfmPe9WeAjr9qnAVQ9GdMo5P\"]}},\"version\":1}",
+					"metadata": "{\"compiler\":{\"version\":\"0.8.18+commit.87f61d96\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"uint256[]\",\"name\":\"other_data\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"layers\",\"type\":\"uint256[]\"},{\"internalType\":\"string\",\"name\":\"base_serial\",\"type\":\"string\"},{\"internalType\":\"contract IRakugakiLayers\",\"name\":\"layers_database\",\"type\":\"address\"},{\"internalType\":\"contract ISVGGenerator\",\"name\":\"generator\",\"type\":\"address\"}],\"internalType\":\"struct NFTMeta\",\"name\":\"meta\",\"type\":\"tuple\"}],\"name\":\"generate\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"defs.sol\":\"ISVGGenerator\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"defs.sol\":{\"keccak256\":\"0x36cb88d52d63fabcec797c2d70ad8071a04a31c1466035cce9b7b894d4ce9efb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://26a76e60b7efa1c6d89eedb457b69cb6caacd9c6f21f363920d92cf90c24f176\",\"dweb:/ipfs/QmfCQXn64q681WNzyQ1AduM8DztACbbDiBEbWBWMhE7WK1\"]}},\"version\":1}",
 					"storageLayout": {
 						"storage": [],
 						"types": null
@@ -282,7 +282,7 @@
 									"constant": false,
 									"id": 7,
 									"mutability": "mutable",
-									"name": "leyers",
+									"name": "layers",
 									"nameLocation": "116:6:0",
 									"nodeType": "VariableDeclaration",
 									"scope": 16,
@@ -559,7 +559,7 @@
 												"nameLocation": "-1:-1:-1",
 												"nodeType": "VariableDeclaration",
 												"scope": 29,
-												"src": "374:20:0",
+												"src": "379:20:0",
 												"stateVariable": false,
 												"storageLocation": "memory",
 												"typeDescriptions": {
@@ -573,14 +573,14 @@
 														"id": 25,
 														"name": "RakugakiLayer",
 														"nameLocations": [
-															"374:13:0"
+															"379:13:0"
 														],
 														"nodeType": "IdentifierPath",
 														"referencedDeclaration": 21,
-														"src": "374:13:0"
+														"src": "379:13:0"
 													},
 													"referencedDeclaration": 21,
-													"src": "374:13:0",
+													"src": "379:13:0",
 													"typeDescriptions": {
 														"typeIdentifier": "t_struct$_RakugakiLayer_$21_storage_ptr",
 														"typeString": "struct RakugakiLayer"
@@ -589,17 +589,17 @@
 												"visibility": "internal"
 											}
 										],
-										"src": "373:22:0"
+										"src": "378:22:0"
 									},
 									"scope": 30,
-									"src": "328:68:0",
-									"stateMutability": "nonpayable",
+									"src": "328:73:0",
+									"stateMutability": "view",
 									"virtual": false,
 									"visibility": "external"
 								}
 							],
 							"scope": 40,
-							"src": "295:104:0",
+							"src": "295:109:0",
 							"usedErrors": []
 						},
 						{
@@ -614,7 +614,7 @@
 								39
 							],
 							"name": "ISVGGenerator",
-							"nameLocation": "413:13:0",
+							"nameLocation": "418:13:0",
 							"nodeType": "ContractDefinition",
 							"nodes": [
 								{
@@ -624,7 +624,7 @@
 									"kind": "function",
 									"modifiers": [],
 									"name": "generate",
-									"nameLocation": "443:8:0",
+									"nameLocation": "448:8:0",
 									"nodeType": "FunctionDefinition",
 									"parameters": {
 										"id": 34,
@@ -635,10 +635,10 @@
 												"id": 33,
 												"mutability": "mutable",
 												"name": "meta",
-												"nameLocation": "468:4:0",
+												"nameLocation": "473:4:0",
 												"nodeType": "VariableDeclaration",
 												"scope": 38,
-												"src": "453:19:0",
+												"src": "458:19:0",
 												"stateVariable": false,
 												"storageLocation": "memory",
 												"typeDescriptions": {
@@ -652,14 +652,14 @@
 														"id": 31,
 														"name": "NFTMeta",
 														"nameLocations": [
-															"453:7:0"
+															"458:7:0"
 														],
 														"nodeType": "IdentifierPath",
 														"referencedDeclaration": 16,
-														"src": "453:7:0"
+														"src": "458:7:0"
 													},
 													"referencedDeclaration": 16,
-													"src": "453:7:0",
+													"src": "458:7:0",
 													"typeDescriptions": {
 														"typeIdentifier": "t_struct$_NFTMeta_$16_storage_ptr",
 														"typeString": "struct NFTMeta"
@@ -668,7 +668,7 @@
 												"visibility": "internal"
 											}
 										],
-										"src": "452:21:0"
+										"src": "457:21:0"
 									},
 									"returnParameters": {
 										"id": 37,
@@ -682,7 +682,7 @@
 												"nameLocation": "-1:-1:-1",
 												"nodeType": "VariableDeclaration",
 												"scope": 38,
-												"src": "497:13:0",
+												"src": "502:13:0",
 												"stateVariable": false,
 												"storageLocation": "memory",
 												"typeDescriptions": {
@@ -693,7 +693,7 @@
 													"id": 35,
 													"name": "string",
 													"nodeType": "ElementaryTypeName",
-													"src": "497:6:0",
+													"src": "502:6:0",
 													"typeDescriptions": {
 														"typeIdentifier": "t_string_storage_ptr",
 														"typeString": "string"
@@ -702,21 +702,21 @@
 												"visibility": "internal"
 											}
 										],
-										"src": "496:15:0"
+										"src": "501:15:0"
 									},
 									"scope": 39,
-									"src": "434:78:0",
+									"src": "439:78:0",
 									"stateMutability": "view",
 									"virtual": false,
 									"visibility": "external"
 								}
 							],
 							"scope": 40,
-							"src": "403:112:0",
+							"src": "408:112:0",
 							"usedErrors": []
 						}
 					],
-					"src": "33:482:0"
+					"src": "33:487:0"
 				},
 				"id": 0
 			}

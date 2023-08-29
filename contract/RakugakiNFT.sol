@@ -15,7 +15,7 @@ contract RakugakiNFT is ERC721 {
     mapping (uint256 => NFTMeta) NFTMetaDatabase;
 
     function mint(uint256 _tokenId, uint256[] calldata _other_data, uint256[] calldata _layers, string calldata _base_serial, IRakugakiLayers _layers_database, ISVGGenerator _generator) external {
-        NFTMetaDatabase[_tokenId] = NFTMeta({leyers: _layers, base_serial: _base_serial, other_data: _other_data, layers_database: _layers_database, generator: _generator});
+        NFTMetaDatabase[_tokenId] = NFTMeta({layers: _layers, base_serial: _base_serial, other_data: _other_data, layers_database: _layers_database, generator: _generator});
         _safeMint(msg.sender, _tokenId);
     }
 

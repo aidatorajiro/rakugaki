@@ -16,7 +16,7 @@
 							},
 							{
 								"internalType": "uint256[]",
-								"name": "leyers",
+								"name": "layers",
 								"type": "uint256[]"
 							},
 							{
@@ -48,7 +48,7 @@
 						"type": "string"
 					}
 				],
-				"stateMutability": "pure",
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -80,18 +80,19 @@
 	},
 	"sources": {
 		"SVGGenerator.sol": {
-			"keccak256": "0x9bc8470148c62c4f11fbd233c6514d765b8412adf7ceddc26039d4006294ad2f",
+			"keccak256": "0x4b8da11761ea94ec070f6131c004f4357e3f44ec6f8311143f44244e64721007",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://d2fb79a2902f855984dd48187e269e37db42e36fb06e9971e8105634b98cb0e4",
-				"dweb:/ipfs/QmPZJij8vwEYKPe445TPwUecbZbKZBsFSKHV92AtLukuPG"
+				"bzz-raw://66dadfe5f31b62dcf218003da2ff66a052095b0a80effb7fc62b21796efbb0ca",
+				"dweb:/ipfs/Qmcn5zPXQQfMmadz2wPnrjy4ncD1WV1ohavQNz8bWWSPKP"
 			]
 		},
 		"defs.sol": {
-			"keccak256": "0xe30b04551ac423df0a42bd77bbc2e36a3b9b1c17cbcd26e87fafac0017ca1886",
+			"keccak256": "0x36cb88d52d63fabcec797c2d70ad8071a04a31c1466035cce9b7b894d4ce9efb",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://20dd5c814ab129ffa663b05f58b65bb4a170564dc8d5e9911ca9f925571931f4",
-				"dweb:/ipfs/QmPFaVaK6vAHtbSinNkyTDtFre3c82FV3r2DW1VJ9a5bgY"
+				"bzz-raw://26a76e60b7efa1c6d89eedb457b69cb6caacd9c6f21f363920d92cf90c24f176",
+				"dweb:/ipfs/QmfCQXn64q681WNzyQ1AduM8DztACbbDiBEbWBWMhE7WK1"
 			]
 		}
 	},
