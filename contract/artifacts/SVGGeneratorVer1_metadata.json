@@ -48,7 +48,7 @@
 						"type": "string"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "pure",
 				"type": "function"
 			}
 		],
@@ -65,7 +65,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"defs.sol": "ISVGGenerator"
+			"SVGGenerator.sol": "SVGGeneratorVer1"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -79,12 +79,19 @@
 		"remappings": []
 	},
 	"sources": {
+		"SVGGenerator.sol": {
+			"keccak256": "0x9bc8470148c62c4f11fbd233c6514d765b8412adf7ceddc26039d4006294ad2f",
+			"urls": [
+				"bzz-raw://d2fb79a2902f855984dd48187e269e37db42e36fb06e9971e8105634b98cb0e4",
+				"dweb:/ipfs/QmPZJij8vwEYKPe445TPwUecbZbKZBsFSKHV92AtLukuPG"
+			]
+		},
 		"defs.sol": {
-			"keccak256": "0x1edc1ec24df6b37a30ebaf8c3ce7dfae8ff0d4cd8c5eac2b70aa08295925928a",
+			"keccak256": "0xe30b04551ac423df0a42bd77bbc2e36a3b9b1c17cbcd26e87fafac0017ca1886",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://857a95a7e8514bcb2d0921a017680b6d9f166d1a2caa4814f5057cb67190b3f4",
-				"dweb:/ipfs/QmTtqMEhqkjvB8jhqx7QtJRfmPe9WeAjr9qnAVQ9GdMo5P"
+				"bzz-raw://20dd5c814ab129ffa663b05f58b65bb4a170564dc8d5e9911ca9f925571931f4",
+				"dweb:/ipfs/QmPFaVaK6vAHtbSinNkyTDtFre3c82FV3r2DW1VJ9a5bgY"
 			]
 		}
 	},

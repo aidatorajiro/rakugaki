@@ -571,11 +571,11 @@
 			]
 		},
 		"RakugakiNFT.sol": {
-			"keccak256": "0x4ec615f4e56e56c9a38e2f9d7391d3634ed115a483ce8f96beea6aefbf2ff38e",
+			"keccak256": "0xb5f8ddd6bec73a27c878eb6b5e122d4a58a9d41f34f9f2914a67e95f8f88f68f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://db9a0d4316631fb48ac6bc67848df219b1765ddbce33c01c12c1e9120c74367c",
-				"dweb:/ipfs/QmYWMqRrmfBQQCFPprZptMhqK3D1uKtC1RKr6njwkteY42"
+				"bzz-raw://d9263c5d60e65644f651ccf7c99b4cc966aecfe282a6ddcd3769b098819e74cd",
+				"dweb:/ipfs/QmVyQdSa1yBaYLgG83aq69X6GV9myKC4L8kgpGJj4jhMTB"
 			]
 		},
 		"defs.sol": {

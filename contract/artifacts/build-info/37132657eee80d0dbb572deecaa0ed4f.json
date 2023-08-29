@@ -1,0 +1,725 @@
+{
+	"id": "37132657eee80d0dbb572deecaa0ed4f",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.18",
+	"solcLongVersion": "0.8.18+commit.87f61d96",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"defs.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.8;\r\n\r\nstruct NFTMeta {\r\n    uint256[] other_data;\r\n    uint256[] leyers;\r\n    string base_serial;\r\n    IRakugakiLayers layers_database;\r\n    ISVGGenerator generator;\r\n}\r\n\r\nstruct RakugakiLayer {\r\n    string image;\r\n    uint256 timestamp;\r\n}\r\n\r\ninterface IRakugakiLayers {\r\n    function getLayer (uint256) external returns (RakugakiLayer memory);\r\n}\r\n\r\ninterface ISVGGenerator {\r\n    function generate (NFTMeta memory meta) external view returns (string memory);\r\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"contracts": {
+			"defs.sol": {
+				"IRakugakiLayers": {
+					"abi": [
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "",
+									"type": "uint256"
+								}
+							],
+							"name": "getLayer",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "string",
+											"name": "image",
+											"type": "string"
+										},
+										{
+											"internalType": "uint256",
+											"name": "timestamp",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct RakugakiLayer",
+									"name": "",
+									"type": "tuple"
+								}
+							],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"getLayer(uint256)": "f781e3ae"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.18+commit.87f61d96\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getLayer\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"image\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"internalType\":\"struct RakugakiLayer\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"defs.sol\":\"IRakugakiLayers\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"defs.sol\":{\"keccak256\":\"0x1edc1ec24df6b37a30ebaf8c3ce7dfae8ff0d4cd8c5eac2b70aa08295925928a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://857a95a7e8514bcb2d0921a017680b6d9f166d1a2caa4814f5057cb67190b3f4\",\"dweb:/ipfs/QmTtqMEhqkjvB8jhqx7QtJRfmPe9WeAjr9qnAVQ9GdMo5P\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				},
+				"ISVGGenerator": {
+					"abi": [
+						{
+							"inputs": [
+								{
+									"components": [
+										{
+											"internalType": "uint256[]",
+											"name": "other_data",
+											"type": "uint256[]"
+										},
+										{
+											"internalType": "uint256[]",
+											"name": "leyers",
+											"type": "uint256[]"
+										},
+										{
+											"internalType": "string",
+											"name": "base_serial",
+											"type": "string"
+										},
+										{
+											"internalType": "contract IRakugakiLayers",
+											"name": "layers_database",
+											"type": "address"
+										},
+										{
+											"internalType": "contract ISVGGenerator",
+											"name": "generator",
+											"type": "address"
+										}
+									],
+									"internalType": "struct NFTMeta",
+									"name": "meta",
+									"type": "tuple"
+								}
+							],
+							"name": "generate",
+							"outputs": [
+								{
+									"internalType": "string",
+									"name": "",
+									"type": "string"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"generate((uint256[],uint256[],string,address,address))": "6cf285c8"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.18+commit.87f61d96\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"uint256[]\",\"name\":\"other_data\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"leyers\",\"type\":\"uint256[]\"},{\"internalType\":\"string\",\"name\":\"base_serial\",\"type\":\"string\"},{\"internalType\":\"contract IRakugakiLayers\",\"name\":\"layers_database\",\"type\":\"address\"},{\"internalType\":\"contract ISVGGenerator\",\"name\":\"generator\",\"type\":\"address\"}],\"internalType\":\"struct NFTMeta\",\"name\":\"meta\",\"type\":\"tuple\"}],\"name\":\"generate\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"defs.sol\":\"ISVGGenerator\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"defs.sol\":{\"keccak256\":\"0x1edc1ec24df6b37a30ebaf8c3ce7dfae8ff0d4cd8c5eac2b70aa08295925928a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://857a95a7e8514bcb2d0921a017680b6d9f166d1a2caa4814f5057cb67190b3f4\",\"dweb:/ipfs/QmTtqMEhqkjvB8jhqx7QtJRfmPe9WeAjr9qnAVQ9GdMo5P\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"defs.sol": {
+				"ast": {
+					"absolutePath": "defs.sol",
+					"exportedSymbols": {
+						"IRakugakiLayers": [
+							30
+						],
+						"ISVGGenerator": [
+							39
+						],
+						"NFTMeta": [
+							16
+						],
+						"RakugakiLayer": [
+							21
+						]
+					},
+					"id": 40,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"0.8"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:20:0"
+						},
+						{
+							"canonicalName": "NFTMeta",
+							"id": 16,
+							"members": [
+								{
+									"constant": false,
+									"id": 4,
+									"mutability": "mutable",
+									"name": "other_data",
+									"nameLocation": "89:10:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 16,
+									"src": "79:20:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+										"typeString": "uint256[]"
+									},
+									"typeName": {
+										"baseType": {
+											"id": 2,
+											"name": "uint256",
+											"nodeType": "ElementaryTypeName",
+											"src": "79:7:0",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											}
+										},
+										"id": 3,
+										"nodeType": "ArrayTypeName",
+										"src": "79:9:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+											"typeString": "uint256[]"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 7,
+									"mutability": "mutable",
+									"name": "leyers",
+									"nameLocation": "116:6:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 16,
+									"src": "106:16:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+										"typeString": "uint256[]"
+									},
+									"typeName": {
+										"baseType": {
+											"id": 5,
+											"name": "uint256",
+											"nodeType": "ElementaryTypeName",
+											"src": "106:7:0",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											}
+										},
+										"id": 6,
+										"nodeType": "ArrayTypeName",
+										"src": "106:9:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+											"typeString": "uint256[]"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 9,
+									"mutability": "mutable",
+									"name": "base_serial",
+									"nameLocation": "136:11:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 16,
+									"src": "129:18:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 8,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "129:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 12,
+									"mutability": "mutable",
+									"name": "layers_database",
+									"nameLocation": "170:15:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 16,
+									"src": "154:31:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_contract$_IRakugakiLayers_$30",
+										"typeString": "contract IRakugakiLayers"
+									},
+									"typeName": {
+										"id": 11,
+										"nodeType": "UserDefinedTypeName",
+										"pathNode": {
+											"id": 10,
+											"name": "IRakugakiLayers",
+											"nameLocations": [
+												"154:15:0"
+											],
+											"nodeType": "IdentifierPath",
+											"referencedDeclaration": 30,
+											"src": "154:15:0"
+										},
+										"referencedDeclaration": 30,
+										"src": "154:15:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_contract$_IRakugakiLayers_$30",
+											"typeString": "contract IRakugakiLayers"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 15,
+									"mutability": "mutable",
+									"name": "generator",
+									"nameLocation": "206:9:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 16,
+									"src": "192:23:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_contract$_ISVGGenerator_$39",
+										"typeString": "contract ISVGGenerator"
+									},
+									"typeName": {
+										"id": 14,
+										"nodeType": "UserDefinedTypeName",
+										"pathNode": {
+											"id": 13,
+											"name": "ISVGGenerator",
+											"nameLocations": [
+												"192:13:0"
+											],
+											"nodeType": "IdentifierPath",
+											"referencedDeclaration": 39,
+											"src": "192:13:0"
+										},
+										"referencedDeclaration": 39,
+										"src": "192:13:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_contract$_ISVGGenerator_$39",
+											"typeString": "contract ISVGGenerator"
+										}
+									},
+									"visibility": "internal"
+								}
+							],
+							"name": "NFTMeta",
+							"nameLocation": "64:7:0",
+							"nodeType": "StructDefinition",
+							"scope": 40,
+							"src": "57:162:0",
+							"visibility": "public"
+						},
+						{
+							"canonicalName": "RakugakiLayer",
+							"id": 21,
+							"members": [
+								{
+									"constant": false,
+									"id": 18,
+									"mutability": "mutable",
+									"name": "image",
+									"nameLocation": "258:5:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "251:12:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_string_storage_ptr",
+										"typeString": "string"
+									},
+									"typeName": {
+										"id": 17,
+										"name": "string",
+										"nodeType": "ElementaryTypeName",
+										"src": "251:6:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_string_storage_ptr",
+											"typeString": "string"
+										}
+									},
+									"visibility": "internal"
+								},
+								{
+									"constant": false,
+									"id": 20,
+									"mutability": "mutable",
+									"name": "timestamp",
+									"nameLocation": "278:9:0",
+									"nodeType": "VariableDeclaration",
+									"scope": 21,
+									"src": "270:17:0",
+									"stateVariable": false,
+									"storageLocation": "default",
+									"typeDescriptions": {
+										"typeIdentifier": "t_uint256",
+										"typeString": "uint256"
+									},
+									"typeName": {
+										"id": 19,
+										"name": "uint256",
+										"nodeType": "ElementaryTypeName",
+										"src": "270:7:0",
+										"typeDescriptions": {
+											"typeIdentifier": "t_uint256",
+											"typeString": "uint256"
+										}
+									},
+									"visibility": "internal"
+								}
+							],
+							"name": "RakugakiLayer",
+							"nameLocation": "230:13:0",
+							"nodeType": "StructDefinition",
+							"scope": 40,
+							"src": "223:68:0",
+							"visibility": "public"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "IRakugakiLayers",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 30,
+							"linearizedBaseContracts": [
+								30
+							],
+							"name": "IRakugakiLayers",
+							"nameLocation": "305:15:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"functionSelector": "f781e3ae",
+									"id": 29,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getLayer",
+									"nameLocation": "337:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 24,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 23,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 29,
+												"src": "347:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 22,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "347:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "346:9:0"
+									},
+									"returnParameters": {
+										"id": 28,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 27,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 29,
+												"src": "374:20:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_RakugakiLayer_$21_memory_ptr",
+													"typeString": "struct RakugakiLayer"
+												},
+												"typeName": {
+													"id": 26,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 25,
+														"name": "RakugakiLayer",
+														"nameLocations": [
+															"374:13:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 21,
+														"src": "374:13:0"
+													},
+													"referencedDeclaration": 21,
+													"src": "374:13:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_RakugakiLayer_$21_storage_ptr",
+														"typeString": "struct RakugakiLayer"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "373:22:0"
+									},
+									"scope": 30,
+									"src": "328:68:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 40,
+							"src": "295:104:0",
+							"usedErrors": []
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "ISVGGenerator",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 39,
+							"linearizedBaseContracts": [
+								39
+							],
+							"name": "ISVGGenerator",
+							"nameLocation": "413:13:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"functionSelector": "6cf285c8",
+									"id": 38,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "generate",
+									"nameLocation": "443:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 34,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 33,
+												"mutability": "mutable",
+												"name": "meta",
+												"nameLocation": "468:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 38,
+												"src": "453:19:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_NFTMeta_$16_memory_ptr",
+													"typeString": "struct NFTMeta"
+												},
+												"typeName": {
+													"id": 32,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 31,
+														"name": "NFTMeta",
+														"nameLocations": [
+															"453:7:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 16,
+														"src": "453:7:0"
+													},
+													"referencedDeclaration": 16,
+													"src": "453:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_NFTMeta_$16_storage_ptr",
+														"typeString": "struct NFTMeta"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "452:21:0"
+									},
+									"returnParameters": {
+										"id": 37,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 36,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 38,
+												"src": "497:13:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_string_memory_ptr",
+													"typeString": "string"
+												},
+												"typeName": {
+													"id": 35,
+													"name": "string",
+													"nodeType": "ElementaryTypeName",
+													"src": "497:6:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_string_storage_ptr",
+														"typeString": "string"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "496:15:0"
+									},
+									"scope": 39,
+									"src": "434:78:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 40,
+							"src": "403:112:0",
+							"usedErrors": []
+						}
+					],
+					"src": "33:482:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

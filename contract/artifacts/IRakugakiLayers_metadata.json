@@ -50,7 +50,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"NFTMeta.sol": "IRakugakiLayers"
+			"defs.sol": "IRakugakiLayers"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -64,12 +64,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"NFTMeta.sol": {
-			"keccak256": "0x3158be8c63a183b88961bfe8b8dd0e170efb2d0da32d124ca4f4128023df06d5",
+		"defs.sol": {
+			"keccak256": "0x1edc1ec24df6b37a30ebaf8c3ce7dfae8ff0d4cd8c5eac2b70aa08295925928a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c65f9252b5ecfc680480f02e0288fae05253ee6fb9f14ad0eca77f5ea1030a59",
-				"dweb:/ipfs/QmfQ22josmefjvMdcBKtsHva2NLncHiEdrBB352AvQy3xv"
+				"bzz-raw://857a95a7e8514bcb2d0921a017680b6d9f166d1a2caa4814f5057cb67190b3f4",
+				"dweb:/ipfs/QmTtqMEhqkjvB8jhqx7QtJRfmPe9WeAjr9qnAVQ9GdMo5P"
 			]
 		}
 	},

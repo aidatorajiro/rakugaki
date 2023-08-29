@@ -49,17 +49,12 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
-			"generate(address,(uint256[],uint256[],string))": "a18c694f"
+			"generate((uint256[],uint256[],string,address,address))": "6cf285c8"
 		}
 	},
 	"abi": [
 		{
 			"inputs": [
-				{
-					"internalType": "contract IRakugakiLayers",
-					"name": "layersContract",
-					"type": "address"
-				},
 				{
 					"components": [
 						{
@@ -76,6 +71,16 @@
 							"internalType": "string",
 							"name": "base_serial",
 							"type": "string"
+						},
+						{
+							"internalType": "contract IRakugakiLayers",
+							"name": "layers_database",
+							"type": "address"
+						},
+						{
+							"internalType": "contract ISVGGenerator",
+							"name": "generator",
+							"type": "address"
 						}
 					],
 					"internalType": "struct NFTMeta",
@@ -91,7 +96,7 @@
 					"type": "string"
 				}
 			],
-			"stateMutability": "nonpayable",
+			"stateMutability": "view",
 			"type": "function"
 		}
 	]

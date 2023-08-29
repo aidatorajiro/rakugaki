@@ -5,6 +5,8 @@ struct NFTMeta {
     uint256[] other_data;
     uint256[] leyers;
     string base_serial;
+    IRakugakiLayers layers_database;
+    ISVGGenerator generator;
 }
 
 struct RakugakiLayer {
@@ -13,9 +15,9 @@ struct RakugakiLayer {
 }
 
 interface IRakugakiLayers {
-    function getLayer(uint256) external returns (RakugakiLayer memory);
+    function getLayer (uint256) external returns (RakugakiLayer memory);
 }
 
 interface ISVGGenerator {
-    function generate (IRakugakiLayers layersContract, NFTMeta memory meta) external returns (string memory);
+    function generate (NFTMeta memory meta) external view returns (string memory);
 }
