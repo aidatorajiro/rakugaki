@@ -130,6 +130,25 @@
 						"type": "uint256"
 					}
 				],
+				"name": "generateSVGImage",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
 				"name": "getApproved",
 				"outputs": [
 					{
@@ -180,6 +199,11 @@
 					{
 						"internalType": "uint256[]",
 						"name": "_layers",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_other_data",
 						"type": "uint256[]"
 					}
 				],
@@ -546,11 +570,11 @@
 			]
 		},
 		"RakugakiNFT.sol": {
-			"keccak256": "0x30e967ba33afa005a6ca49cb17aca3467b023c5ba2765a896d00c89d8ecf2c35",
+			"keccak256": "0x0ee6311a91d09fec974e40ed910b1ce79d6a7f1628126a7a4c8480aff593386a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2a2d2400e6075cecdc8b80925f0e255c9933e3d374f7de4c0b1c474d6052482f",
-				"dweb:/ipfs/QmXPvkAwSzroibw5Edx1tVufKHWEubprMRCNkeajGRS1cA"
+				"bzz-raw://75b9877f5a15d7dc34bac7da3e41ab329c6370db314633a6b07aa755e5a99181",
+				"dweb:/ipfs/QmSN6MBUtqec4EKrW3Q7BsifAX9oT4z8YUtRudGG5343dk"
 			]
 		}
 	},

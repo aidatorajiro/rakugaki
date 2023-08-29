@@ -76,10 +76,11 @@
 	},
 	"sources": {
 		"RakugakiLayers.sol": {
-			"keccak256": "0x34e424079ac9971cf8b9139369da43a79b49ba744cc33cf4164fe09de3ab3f2a",
+			"keccak256": "0xf70b92ef123bd4111c2b5d786d37746e7fe42723438cc93d9d182b1c7ddefbec",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://aec134f58bfd9866977253f34c63ad96ebec56f773861ed774ff915f67697428",
-				"dweb:/ipfs/QmaDHPk2eADFgtfqoVDwQCquoGWA8TmbTcqanbZvKCWGkw"
+				"bzz-raw://23edd15079978a4795e5eb9ccf9ad30ec769169272d2a68ff640eff9419dd1d6",
+				"dweb:/ipfs/QmZDbvyERDwACNMEMLj8LtarSwkUMcodod55seXkL19T4f"
 			]
 		}
 	},

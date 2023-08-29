@@ -5,20 +5,17 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "RakugakiLayers.sol";
+import "NFTMeta.sol";
 
 contract RakugakiNFT is ERC721 {
-    constructor() ERC721("Rakugaki", "RGK") {
-    }
+    RakugakiLayers layersContract = RakugakiLayers(0xABAaD64387071ec0A106940D0271A78Fe3869986);
 
-    struct NFTMeta {
-        uint256[] leyers;
-        string base_serial;
-    }
+    constructor() ERC721("Rakugaki", "RGK") { }
 
     mapping (uint256 => NFTMeta) rakugakidatabase;
 
-    function mint(uint256 _tokenId, string calldata _base_serial, uint256[] calldata _layers) external {
-        rakugakidatabase[_tokenId] = NFTMeta({leyers: _layers, base_serial: _base_serial});
+    function mint(uint256 _tokenId, string calldata _base_serial, uint256[] calldata _layers, uint256[] calldata _other_data) external {
+        rakugakidatabase[_tokenId] = NFTMeta({leyers: _layers, base_serial: _base_serial, other_data: _other_data});
         _safeMint(msg.sender, _tokenId);
     }
 
@@ -41,7 +38,7 @@ contract RakugakiNFT is ERC721 {
     }
 
     function generateSVGImage(uint256 tokenId)
-        internal
+        public
         pure
         returns (string memory)
     {
