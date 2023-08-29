@@ -563,18 +563,27 @@
 			]
 		},
 		"RakugakiLayers.sol": {
-			"keccak256": "0x34e424079ac9971cf8b9139369da43a79b49ba744cc33cf4164fe09de3ab3f2a",
+			"keccak256": "0x2ffad0e11f24c130064420e4d40409d879943f69fa42f3293384bfde56f0b303",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://aec134f58bfd9866977253f34c63ad96ebec56f773861ed774ff915f67697428",
-				"dweb:/ipfs/QmaDHPk2eADFgtfqoVDwQCquoGWA8TmbTcqanbZvKCWGkw"
+				"bzz-raw://5b07410169e2cc861242babfe27d69232e04452922a227779a0e0c9f4acef193",
+				"dweb:/ipfs/QmdZCvFaop1pya3F2ebAbtzjfxDjyp8BtTczrM4tmauRAp"
 			]
 		},
 		"RakugakiNFT.sol": {
-			"keccak256": "0x0ee6311a91d09fec974e40ed910b1ce79d6a7f1628126a7a4c8480aff593386a",
+			"keccak256": "0x4ec615f4e56e56c9a38e2f9d7391d3634ed115a483ce8f96beea6aefbf2ff38e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://75b9877f5a15d7dc34bac7da3e41ab329c6370db314633a6b07aa755e5a99181",
-				"dweb:/ipfs/QmSN6MBUtqec4EKrW3Q7BsifAX9oT4z8YUtRudGG5343dk"
+				"bzz-raw://db9a0d4316631fb48ac6bc67848df219b1765ddbce33c01c12c1e9120c74367c",
+				"dweb:/ipfs/QmYWMqRrmfBQQCFPprZptMhqK3D1uKtC1RKr6njwkteY42"
+			]
+		},
+		"defs.sol": {
+			"keccak256": "0x3158be8c63a183b88961bfe8b8dd0e170efb2d0da32d124ca4f4128023df06d5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c65f9252b5ecfc680480f02e0288fae05253ee6fb9f14ad0eca77f5ea1030a59",
+				"dweb:/ipfs/QmfQ22josmefjvMdcBKtsHva2NLncHiEdrBB352AvQy3xv"
 			]
 		}
 	},

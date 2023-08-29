@@ -9,25 +9,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "data",
-						"type": "string"
-					}
-				],
-				"name": "addImage",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "id",
+						"name": "",
 						"type": "uint256"
 					}
 				],
@@ -51,7 +33,7 @@
 						"type": "tuple"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -68,7 +50,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"RakugakiLayers.sol": "RakugakiLayers"
+			"NFTMeta.sol": "IRakugakiLayers"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -82,15 +64,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"RakugakiLayers.sol": {
-			"keccak256": "0x2ffad0e11f24c130064420e4d40409d879943f69fa42f3293384bfde56f0b303",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://5b07410169e2cc861242babfe27d69232e04452922a227779a0e0c9f4acef193",
-				"dweb:/ipfs/QmdZCvFaop1pya3F2ebAbtzjfxDjyp8BtTczrM4tmauRAp"
-			]
-		},
-		"defs.sol": {
+		"NFTMeta.sol": {
 			"keccak256": "0x3158be8c63a183b88961bfe8b8dd0e170efb2d0da32d124ca4f4128023df06d5",
 			"license": "MIT",
 			"urls": [

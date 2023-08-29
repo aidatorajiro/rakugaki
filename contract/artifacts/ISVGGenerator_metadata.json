@@ -1,0 +1,87 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract IRakugakiLayers",
+						"name": "layersContract",
+						"type": "address"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256[]",
+								"name": "other_data",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "uint256[]",
+								"name": "leyers",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "string",
+								"name": "base_serial",
+								"type": "string"
+							}
+						],
+						"internalType": "struct NFTMeta",
+						"name": "meta",
+						"type": "tuple"
+					}
+				],
+				"name": "generate",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NFTMeta.sol": "ISVGGenerator"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NFTMeta.sol": {
+			"keccak256": "0x3158be8c63a183b88961bfe8b8dd0e170efb2d0da32d124ca4f4128023df06d5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c65f9252b5ecfc680480f02e0288fae05253ee6fb9f14ad0eca77f5ea1030a59",
+				"dweb:/ipfs/QmfQ22josmefjvMdcBKtsHva2NLncHiEdrBB352AvQy3xv"
+			]
+		}
+	},
+	"version": 1
+}
