@@ -6,7 +6,7 @@ import subprocess
 import time
 
 subprocess.run(["taskkill.exe", "/F", "/IM", "chrome.exe"])
-chromeprocess = subprocess.Popen(["C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "--remote-debugging-port=9222", "--kiosk"])
+chromeprocess = subprocess.Popen(["C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "--remote-debugging-port=9222", "--kiosk", "--autoplay-policy=no-user-gesture-required"])
 
 # google-chrome-stable --remote-debugging-port=9222 --headless
 
@@ -17,6 +17,11 @@ browser = pychrome.Browser(url="http://127.0.0.1:9222")
 tab = browser.new_tab()
 tab.start()
 tab.Network.enable()
+
+tab.Page.navigate(url=url_douga, _timeout=5)
+tab.wait(5)
+tab.Runtime.evaluate(expression="mainvideo.play()")
+tab.wait(10000)
 
 while True:
     tab.Page.navigate(url=url_opensea, _timeout=5)
