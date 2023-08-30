@@ -67,10 +67,3 @@ scrollToSmoothly(document.body.scrollHeight, 60000)
 scrollToSmoothly(0, 60000)
     """)
         tab.wait(100)
-    
-    #######
-    #######
-    #######
-
-    tab.Page.navigate(url=url_douga, _timeout=5)
-    tab.wait(5)
