@@ -57,11 +57,11 @@ function scrollToSmoothly(pos, time) {
         result = tab.Runtime.evaluate(expression="""
 scrollToSmoothly(document.body.scrollHeight, 60000)
     """)
-        tab.wait(100)
+        tab.wait(60)
         tab.Runtime.evaluate(expression="""
 scrollToSmoothly(0, 60000)
     """)
-        tab.wait(100)
+        tab.wait(60)
     
     douga('movies/1.mp4')
     douga('movies/2.mp4')
