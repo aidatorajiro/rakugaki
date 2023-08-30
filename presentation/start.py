@@ -66,3 +66,4 @@ scrollToSmoothly(0, 60000)
     
     douga('movies/1.mp4')
     douga('movies/2.mp4')
+    douga('movies/3.mp4')
