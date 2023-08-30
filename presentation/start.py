@@ -2,6 +2,11 @@ import subprocess
 import pychrome
 import json
 import os
+import subprocess
+import time
+
+subprocess.run(["taskkill.exe", "/F", "/IM", "chrome.exe"])
+chromeprocess = subprocess.Popen(["C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "--remote-debugging-port=9222", "--kiosk"])
 
 # google-chrome-stable --remote-debugging-port=9222 --headless
 
