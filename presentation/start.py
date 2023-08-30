@@ -18,12 +18,22 @@ tab = browser.new_tab()
 tab.start()
 tab.Network.enable()
 
-tab.Page.navigate(url=url_douga, _timeout=5)
-tab.wait(5)
-tab.Runtime.evaluate(expression="mainvideo.play()")
-tab.wait(10000)
+def douga(src):
+    tab.Page.navigate(url=url_douga, _timeout=5)
+    tab.wait(1)
+    tab.Runtime.evaluate(expression="mainvideo.src='%s'" % src)
+    tab.wait(1)
+    tab.Runtime.evaluate(expression="mainvideo.play()")
+    while True:
+        end = tab.Runtime.evaluate(expression="mainvideo.ended")
+        if end['result']['value'] == True:
+            break
+        tab.wait(1)
 
 while True:
+    douga('movies/1.mp4')
+    douga('movies/2.mp4')
+
     tab.Page.navigate(url=url_opensea, _timeout=5)
     tab.wait(5)
     result = tab.Runtime.evaluate(expression="""
