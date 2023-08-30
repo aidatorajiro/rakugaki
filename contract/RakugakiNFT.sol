@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "RakugakiLayers.sol";
 import "defs.sol";
 
-// IRakugakiLayers(0x5bB5a69A8b0e80C45B5C0C003A8253623c0B5D46);
+// RakugakiNFT 0xeb9779c9b66e16a95e16d28f6ed8241ba09ddd18
 
 contract RakugakiNFT is ERC721 {
 
@@ -15,7 +15,7 @@ contract RakugakiNFT is ERC721 {
 
     mapping (uint256 => NFTMeta) NFTMetaDatabase;
 
-    function mint(uint256 _tokenId, uint256[] calldata _other_data, uint256[] calldata _layers, string calldata _base_serial, IRakugakiLayers _layers_database, ISVGGenerator _generator) external {
+    function mint(uint256 _tokenId, uint256[] calldata _other_data, uint256[] calldata _layers, string calldata _base_serial, IRakugakiLayers _layers_database, ISVGGenerator _generator) public {
         NFTMetaDatabase[_tokenId] = NFTMeta({layers: _layers, base_serial: _base_serial, other_data: _other_data, layers_database: _layers_database, generator: _generator});
         _safeMint(msg.sender, _tokenId);
     }

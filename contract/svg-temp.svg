@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+    <filter id="image">
+        <feImage result="img1" href="..."/>
+        <feImage result="img2" href="..."/>
+        <feDisplacementMap in2="img1" in="img2" result="disp" scale="30" xChannelSelector="R" yChannelSelector="G" />
+        <feBlend in="img1" in2="disp" mode="multiply" />
+    </filter>
+    <rect x="0%" y="0%" width="100%" height="100%" style="filter:url(#image);" />
+</svg>

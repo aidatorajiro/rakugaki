@@ -1,0 +1,100 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256[]",
+								"name": "other_data",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "uint256[]",
+								"name": "layers",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "string",
+								"name": "base_serial",
+								"type": "string"
+							},
+							{
+								"internalType": "contract IRakugakiLayers",
+								"name": "layers_database",
+								"type": "address"
+							},
+							{
+								"internalType": "contract ISVGGenerator",
+								"name": "generator",
+								"type": "address"
+							}
+						],
+						"internalType": "struct NFTMeta",
+						"name": "meta",
+						"type": "tuple"
+					}
+				],
+				"name": "generate",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"SVGGenerator.sol": "SVGGeneratorDisp2"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"SVGGenerator.sol": {
+			"keccak256": "0xa70d2d8c248645dfac58b84b972e8537e5898b4c26eb805f16c6c7c517626ffe",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://033c86492ab391e48d54cc51b7d73a8b5478dff55520d9e439f698ee731423f6",
+				"dweb:/ipfs/QmQYPwYRrBJ7Z1hbgPQTgKG3rHZdBXEXo7EWYz23BVtHja"
+			]
+		},
+		"defs.sol": {
+			"keccak256": "0x36cb88d52d63fabcec797c2d70ad8071a04a31c1466035cce9b7b894d4ce9efb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://26a76e60b7efa1c6d89eedb457b69cb6caacd9c6f21f363920d92cf90c24f176",
+				"dweb:/ipfs/QmfCQXn64q681WNzyQ1AduM8DztACbbDiBEbWBWMhE7WK1"
+			]
+		}
+	},
+	"version": 1
+}

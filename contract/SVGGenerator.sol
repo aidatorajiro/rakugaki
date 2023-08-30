@@ -3,22 +3,23 @@ pragma solidity 0.8;
 
 import "defs.sol";
 
-contract SVGGeneratorVer1 is ISVGGenerator {
+// 0x06ae046986A584514E343fe6E3494D15E713E37a
+
+contract SVGGeneratorDisp2 is ISVGGenerator {
     function generate(NFTMeta memory meta)
         public
         view
         returns (string memory)
     {
-        string memory image_string = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">';
-        
-        for (uint256 i = 0; i < meta.layers.length; i++) {
-            uint256 layer_id = meta.layers[i];
-            image_string = string.concat(image_string, meta.layers_database.getLayer(layer_id).image);
-        }
-
-        return string.concat(
-            image_string,
-            '</svg>'
-        );
+        return string(abi.encodePacked(
+'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">',
+    '<filter id="image">',
+        '<feImage result="img1" href="', meta.layers_database.getLayer(meta.layers[0]).image, '"/>',
+        '<feImage result="img2" href="', meta.layers_database.getLayer(meta.layers[1]).image, '"/>',
+        '<feDisplacementMap in2="img1" in="img2" result="disp" scale="30" xChannelSelector="R" yChannelSelector="G" />',
+        '<feBlend in="img1" in2="disp" mode="multiply" />',
+    '</filter>',
+    '<rect x="0%" y="0%" width="100%" height="100%" style="filter:url(#image);" />',
+'</svg>'));
     }
 }
