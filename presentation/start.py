@@ -40,11 +40,11 @@ function scrollToSmoothly(pos, time) {
     
     for i in range(1):
         result = tab.Runtime.evaluate(expression="""
-scrollToSmoothly(document.body.scrollHeight, 100000)
+scrollToSmoothly(document.body.scrollHeight, 60000)
     """)
         tab.wait(100)
         tab.Runtime.evaluate(expression="""
-scrollToSmoothly(0, 100000)
+scrollToSmoothly(0, 60000)
     """)
         tab.wait(100)
     
