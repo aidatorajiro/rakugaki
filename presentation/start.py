@@ -20,16 +20,15 @@ def douga(src):
     tab.Runtime.evaluate(expression="mainvideo.src='%s'" % src)
     tab.wait(1)
     tab.Runtime.evaluate(expression="mainvideo.play()")
+    count = 0
     while True:
         end = tab.Runtime.evaluate(expression="mainvideo.ended")
-        if end['result']['value'] == True:
+        if end['result']['value'] == True or count > 300:
             break
+        count += 1
         tab.wait(1)
 
 while True:
-    douga('movies/1.mp4')
-    douga('movies/2.mp4')
-
     tab.Page.navigate(url=url_opensea, _timeout=5)
     tab.wait(5)
     result = tab.Runtime.evaluate(expression="""
@@ -63,3 +62,6 @@ scrollToSmoothly(document.body.scrollHeight, 60000)
 scrollToSmoothly(0, 60000)
     """)
         tab.wait(100)
+    
+    douga('movies/1.mp4')
+    douga('movies/2.mp4')
