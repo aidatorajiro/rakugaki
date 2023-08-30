@@ -52,5 +52,5 @@ scrollToSmoothly(0, 100000)
     #######
     #######
 
-
-    
+    tab.Page.navigate(url=url_douga, _timeout=5)
+    tab.wait(5)
