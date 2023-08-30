@@ -30,7 +30,7 @@ contract RakugakiNFT is ERC721 {
         string memory image = Base64.encode(bytes(meta.generator.generate(NFTMetaDatabase[tokenId])));
         return string(
                 abi.encodePacked(
-                    '{"name":"Rakugaki"',
+                    '{"name":"Rakugaki ', meta.base_serial, '"',
                     ', "description":"Rakugaki", "image": "',
                     'data:image/svg+xml;base64,',
                     image,

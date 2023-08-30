@@ -562,19 +562,19 @@
 			]
 		},
 		"RakugakiNFT.sol": {
-			"keccak256": "0x0dedaaf1d906cce9ac6f36cc1eaff2cf3591490a99a4a003fc74c7de58700f69",
+			"keccak256": "0x6fa2cc1082265679acd22f4cf3a55399951caa148cb7502c7f2c056c1ad37f1b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://dd6b44f56a7dc059c9d5217bd4715bde608e44a384f62f09fdd631aa3225bd4a",
-				"dweb:/ipfs/Qmaeqmgcky6s36TGc3Kf7jAU9kodFTChZWs6j98kKa4T7k"
+				"bzz-raw://db3224e221fe68779faf0aa0ba39b5d8412b4791f0c2d6bc903cc899e2531868",
+				"dweb:/ipfs/QmUhd6TmBZpsRMxTtXVqSvptGBWHnAQiM2QEx7zJpBGhsN"
 			]
 		},
 		"defs.sol": {
-			"keccak256": "0x36cb88d52d63fabcec797c2d70ad8071a04a31c1466035cce9b7b894d4ce9efb",
+			"keccak256": "0xd12f5fb663a9c9c7da84b1379de07913cff4e70447e3807da54ee8bde16a2b44",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://26a76e60b7efa1c6d89eedb457b69cb6caacd9c6f21f363920d92cf90c24f176",
-				"dweb:/ipfs/QmfCQXn64q681WNzyQ1AduM8DztACbbDiBEbWBWMhE7WK1"
+				"bzz-raw://5bc00d53a1ff12a72f14be84c0e85f5d07547af417ee0ee2c0e3e2f022729fcb",
+				"dweb:/ipfs/QmSJmfhWmisQk8fAR3pZBNLoz9LBnRwXgmctEK9FiEww3M"
 			]
 		}
 	},
