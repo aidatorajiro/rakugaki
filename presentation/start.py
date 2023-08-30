@@ -2,6 +2,7 @@ import subprocess
 import pychrome
 import os
 import subprocess
+import time
 
 subprocess.run(["taskkill.exe", "/F", "/IM", "chrome.exe"])
 chromeprocess = subprocess.Popen(["C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "--remote-debugging-port=9222", "--kiosk", "--autoplay-policy=no-user-gesture-required"])
@@ -16,22 +17,21 @@ tab.Network.enable()
 
 def douga(src):
     tab.Page.navigate(url=url_douga, _timeout=5)
-    tab.wait(1)
+    time.sleep(1)
     tab.Runtime.evaluate(expression="mainvideo.src='%s'" % src)
-    tab.wait(1)
+    time.sleep(1)
     tab.Runtime.evaluate(expression="mainvideo.play()")
+    count = 0
     while True:
         end = tab.Runtime.evaluate(expression="mainvideo.ended")
         if end['result']['value'] == True:
             break
-        tab.wait(1)
+        count += 1
+        time.sleep(1)
 
 while True:
-    douga('movies/1.mp4')
-    douga('movies/2.mp4')
-
     tab.Page.navigate(url=url_opensea, _timeout=5)
-    tab.wait(5)
+    time.sleep(5)
     result = tab.Runtime.evaluate(expression="""
 function scrollToSmoothly(pos, time) {
     var currentPos = window.pageYOffset;
@@ -58,8 +58,11 @@ function scrollToSmoothly(pos, time) {
         result = tab.Runtime.evaluate(expression="""
 scrollToSmoothly(document.body.scrollHeight, 60000)
     """)
-        tab.wait(100)
+        time.sleep(60)
         tab.Runtime.evaluate(expression="""
 scrollToSmoothly(0, 60000)
     """)
-        tab.wait(100)
+        time.sleep(60)
+    
+    douga('movies/1.mp4')
+    douga('movies/2.mp4')
