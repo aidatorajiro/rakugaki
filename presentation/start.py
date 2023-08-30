@@ -1,14 +1,10 @@
 import subprocess
 import pychrome
-import json
 import os
 import subprocess
-import time
 
 subprocess.run(["taskkill.exe", "/F", "/IM", "chrome.exe"])
 chromeprocess = subprocess.Popen(["C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "--remote-debugging-port=9222", "--kiosk", "--autoplay-policy=no-user-gesture-required"])
-
-# google-chrome-stable --remote-debugging-port=9222 --headless
 
 url_opensea = "https://testnets.opensea.io/0xae97EDa493939137B20aD1E45Dd14cD82B2f3826"
 url_douga = "file://" + os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/douga.html"
