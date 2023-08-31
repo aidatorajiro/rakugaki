@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { Alert, Box, Button, Link, Stack, TextField, Zoom, createTheme } from '@mui/material';
+import { Alert, Box, Button, IconButton, Link, Stack, TextField, Zoom, createTheme } from '@mui/material';
 import base64 from 'base64-js'
 import { useState } from 'react'
-import {getWeb3, getRakugakiLayers, runCall} from "./utils";
+import {getWeb3, getRakugakiLayers, runCall, calculateImageID} from "./utils";
 import Web3, { MatchPrimitiveType } from 'web3';
 import { NonPayableMethodObject } from 'web3-eth-contract';
 import { keccak256 } from 'web3-utils';
 import {Buffer} from 'buffer';
 import { bigIntToUint8Array } from 'web3-eth-accounts';
+import NavigateNext from '@mui/icons-material/NavigateNext';
+import NavigateBefore from '@mui/icons-material/NavigateBefore';
+
 
 const theme = createTheme({
   palette: {
@@ -39,8 +42,9 @@ function DataUpload() {
         if (acw3) {
           const [accounts, web3] = acw3;
           const rakugakiLayers = getRakugakiLayers(web3);
-          const transaction = rakugakiLayers.methods.addImage(imageID, compressed);
-          runCall(web3, rakugakiLayers, transaction, accounts[0])
+          const transaction = rakugakiLayers.methods.addImage(calculateImageID(imageID), compressed);
+          await runCall(web3, rakugakiLayers, transaction, accounts[0])
+          downloadImageData()
         }
       }
     } catch (e) {
@@ -55,57 +59,66 @@ function DataUpload() {
   });
   const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
-    (async () => {
-      let imageIDBuf = Buffer.from(new TextEncoder().encode(imageID));
-      let imageIDProcessed;
-      if (imageID.match(/^[0-9]+$/)) {
-        let arr = bigIntToUint8Array(BigInt(imageID))
-        if (arr.length > 32) {
-          imageIDProcessed = BigInt(keccak256(arr))
+  function increaseCount () {
+    if (imageID.match(/^[0-9]+$/)) {
+      setImageID((BigInt(imageID) + BigInt('1')).toString())
+    }
+  }
+
+  function decreaseCount () {
+    if (imageID.match(/^[0-9]+$/) && imageID !== '0') {
+      setImageID((BigInt(imageID) + BigInt('-1')).toString())
+    }
+  }
+
+  async function downloadImageData () {
+
+
+    try {
+      const acw3 = await getWeb3();
+      if (acw3) {
+        const [accounts, web3] = acw3;
+        const rakugakiLayers = getRakugakiLayers(web3);
+        const d = await rakugakiLayers.methods.getLayer(calculateImageID(imageID)).call();
+        if (d.timestamp.toString() !== '0') {
+          setImageData(d)
         } else {
-          imageIDProcessed = imageID
+          setImageData(d)
         }
-      } else if (imageIDBuf.length === 0 || imageIDBuf.length > 32) {
-        imageIDProcessed = BigInt(keccak256(imageID))
-      } else {
-        imageIDProcessed = BigInt("0x"+imageIDBuf.toString('hex'))
       }
-      console.log(imageIDProcessed)
-      try {
-        const acw3 = await getWeb3();
-        if (acw3) {
-          const [accounts, web3] = acw3;
-          const rakugakiLayers = getRakugakiLayers(web3);
-          const d = await rakugakiLayers.methods.getLayer(imageIDProcessed).call();
-          if (d.timestamp.toString() !== '0') {
-            setImageData(d)
-          } else {
-            setImageData(d)
-          }
-        }
-      } catch (e) {
-        setErrorMessage(String(e))
-      }
-    })();
-  },[imageID])
+    } catch (e) {
+      setErrorMessage(String(e))
+    }
+  }
+
+  useEffect(() => {
+    downloadImageData()
+  }, [imageID])
 
   return (
     <Stack direction="column" spacing={2} sx={{p: 2}}>
         <TextField label="Image ID" variant="outlined" value={imageID} onChange={e => setImageID(e.target.value)}/>
+        <Stack direction="row" justifyContent="center">
+        <IconButton onClick={decreaseCount} color="primary" aria-label="add to shopping cart">
+          <NavigateBefore />
+        </IconButton>
+        <IconButton onClick={increaseCount} color="primary" aria-label="add to shopping cart">
+          <NavigateNext />
+        </IconButton>
+        </Stack>
+        <Zoom in={Boolean(imageData.timestamp.toString() !== '0')}>
+          <img src={imageData.image}/>
+        </Zoom>
         <Zoom in={Boolean(imageData.timestamp.toString() === '0')}>
         <Button sx={{p:1}} component="label" variant="contained" color="primary">
           Upload Image File
           <input accept="image/png, image/jpeg" className="hiddeninput" type="file" onChange={handleUploadButton}/>
         </Button>
         </Zoom>
-        <Zoom in={Boolean(imageData.timestamp.toString() !== '0')}>
-          <img src={imageData.image}/>
-        </Zoom>
       <Zoom in={Boolean(errorMessage)}>
       <Alert severity="error">
         {errorMessage}
-        <Button onClick={() => setErrorMessage('')} sx={{p:2, m: 2, display: 'block'}} color='primary'>CLOSE</Button>
+        <Button onClick={() => setErrorMessage('')}　color='primary'>CLOSE</Button>
       </Alert>
       </Zoom>
     </Stack>

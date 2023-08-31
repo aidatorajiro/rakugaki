@@ -2,6 +2,9 @@ import Web3, { Contract, Numbers } from 'web3';
 import detectEthereumProvider from '@metamask/detect-provider'
 import RakugakiLayers from './artifacts/RakugakiLayers'
 import { NonPayableMethodObject, PayableMethodObject } from 'web3-eth-contract';
+import { bigIntToUint8Array } from 'web3-eth-accounts';
+import { keccak256 } from 'web3-utils';
+import { Buffer } from 'buffer';
 
 export async function getWeb3(): Promise<[[string], Web3] | null> {
     const provider = await detectEthereumProvider({ silent: true })
@@ -34,4 +37,22 @@ export async function runCall(web3: Web3, contract: Contract<any>, transaction: 
         maxPriorityFeePerGas: '1000000000',
         value
     })
+}
+
+export function calculateImageID(imageID: string) {
+  let imageIDBuf = Buffer.from(new TextEncoder().encode(imageID));
+  let imageIDProcessed;
+  if (imageID.match(/^[0-9]+$/)) {
+    let arr = bigIntToUint8Array(BigInt(imageID))
+    if (arr.length > 32) {
+      imageIDProcessed = BigInt(keccak256(arr))
+    } else {
+      imageIDProcessed = imageID
+    }
+  } else if (imageIDBuf.length === 0 || imageIDBuf.length > 32) {
+    imageIDProcessed = BigInt(keccak256(imageID))
+  } else {
+    imageIDProcessed = BigInt("0x"+imageIDBuf.toString('hex'))
+  }
+  return imageIDProcessed;
 }
