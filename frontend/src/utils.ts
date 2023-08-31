@@ -53,7 +53,7 @@ export async function runCall(
     from: from,
     to: contract.options.address,
     data: transaction.encodeABI(),
-    gas: await transaction.estimateGas({from}),
+    gas: await transaction.estimateGas({ from }),
     nonce: await web3.eth.getTransactionCount(from),
     maxFeePerGas: "1000000000",
     maxPriorityFeePerGas: "1000000000",

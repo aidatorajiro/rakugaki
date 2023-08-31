@@ -1,6 +1,7 @@
 import NavigateBefore from "@mui/icons-material/NavigateBefore";
 import NavigateNext from "@mui/icons-material/NavigateNext";
 import {
+    Alert,
   Box,
   Button,
   FormControl,
@@ -10,8 +11,9 @@ import {
   Select,
   Stack,
   TextField,
+  Zoom,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   calculateUint256ID,
   getRakugakiLayers,
@@ -29,6 +31,8 @@ function Kasane() {
   const [generator, setGenerator] = useState(
     "0x06ae046986A584514E343fe6E3494D15E713E37a",
   );
+  const [svgData, setSVGData] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   function addressChoice(address: string, comment: string) {
     return (
@@ -72,9 +76,25 @@ function Kasane() {
     }
   }
 
-  function downloadSVGData() {
-    throw new Error("Function not implemented.");
+  async function downloadSVGData() {
+    try {
+        const acw3 = await getWeb3();
+        if (acw3) {
+          const [accounts, web3] = acw3;
+          const rakugakiNFT = getRakugakiNFT(web3);
+          const d = await rakugakiNFT.methods
+            .tokenURI(calculateUint256ID(tokenID))
+            .call();
+          setSVGData(JSON.parse(d).image);
+        }
+      } catch (e) {
+        setErrorMessage(String(e));
+    }
   }
+
+  useEffect(() => {
+    downloadSVGData();
+  }, [tokenID]);
 
   return (
     <Stack direction="column" spacing={2} sx={{ p: 2 }}>
@@ -151,6 +171,17 @@ function Kasane() {
       >
         Kasaneru
       </Button>
+      <Zoom in={Boolean(errorMessage)}>
+        <Alert severity="error">
+          {errorMessage}
+          <Button onClick={() => setErrorMessage("")} color="primary">
+            CLOSE
+          </Button>
+        </Alert>
+      </Zoom>
+      <Zoom in={Boolean(svgData)}>
+        <img src={svgData} />
+      </Zoom>
     </Stack>
   );
 }
