@@ -6,6 +6,7 @@ import { useState } from 'react'
 import {getWeb3, getRakugakiLayers, runCall} from "./utils";
 import Web3, { MatchPrimitiveType } from 'web3';
 import { NonPayableMethodObject } from 'web3-eth-contract';
+import { keccak256 } from 'web3-utils';
 
 
 const theme = createTheme({
@@ -55,12 +56,18 @@ function DataUpload() {
 
   useEffect(() => {
     (async () => {
+      let imageIDProcessed;
+      if (!imageID.match(/^[0-9]+$/)) {
+        imageIDProcessed = keccak256(imageID)
+      } else {
+        imageIDProcessed = imageID
+      }
       try {
         const acw3 = await getWeb3();
         if (acw3) {
           const [accounts, web3] = acw3;
           const rakugakiLayers = getRakugakiLayers(web3);
-          const d = await rakugakiLayers.methods.getLayer(imageID).call();
+          const d = await rakugakiLayers.methods.getLayer(imageIDProcessed).call();
           if (d.timestamp.toString() !== '0') {
             setImageData(d)
           } else {
@@ -75,8 +82,7 @@ function DataUpload() {
 
   return (
     <Stack direction="column" spacing={2} sx={{p: 2}}>
-      <Stack direction="row" spacing={2} >
-        <TextField type="number" label="Image ID" variant="outlined" value={imageID} onChange={e => setImageID(e.target.value)}/>
+        <TextField label="Image ID" variant="outlined" value={imageID} onChange={e => setImageID(e.target.value)}/>
         <Zoom in={Boolean(imageData.timestamp.toString() === '0')}>
         <Button sx={{p:1}} component="label" variant="contained" color="primary">
           Upload Image File
@@ -86,7 +92,6 @@ function DataUpload() {
         <Zoom in={Boolean(imageData.timestamp.toString() !== '0')}>
           <img src={imageData.image}/>
         </Zoom>
-      </Stack>
       <Zoom in={Boolean(errorMessage)}>
       <Alert severity="error">
         {errorMessage}

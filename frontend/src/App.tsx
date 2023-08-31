@@ -1,7 +1,8 @@
 import './App.css';
-import { ThemeProvider, createTheme } from '@mui/material';
+import { Grid, ThemeProvider, createTheme } from '@mui/material';
 import DataUpload from './DataUpload';
 import Kasane from './Kasane';
+import { Stack } from '@mui/system';
 
 const theme = createTheme({
   palette: {
@@ -18,8 +19,13 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <DataUpload/>
-      <Kasane/>
+      <Grid container spacing='3em'>
+      
+      <Grid item xs={6}><DataUpload/></Grid>
+      <Grid item xs={6}><Kasane/></Grid>
+        
+        
+      </Grid>
     </ThemeProvider>
   );
 }

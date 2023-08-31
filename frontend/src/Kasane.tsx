@@ -1,7 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 function Kasane() {
-    return (<Box></Box>)
+    return (<Stack direction="column" spacing={2} sx={{p: 2}}>
+        
+    </Stack>)
 }
 
 export default Kasane;
