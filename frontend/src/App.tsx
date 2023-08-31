@@ -1,8 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Box, Button, ThemeProvider, createTheme } from '@mui/material';
+import { Box, Button, Stack, TextField, ThemeProvider, createTheme } from '@mui/material';
 import base64 from 'base64-js'
+import Web3 from 'web3';
+import { useState, useEffect } from 'react'
+import detectEthereumProvider from '@metamask/detect-provider'
 
 const theme = createTheme({
   palette: {
@@ -17,6 +19,22 @@ const theme = createTheme({
 
 
 function App() {
+  async function getWeb3(): Promise<[[string], Web3] | null> {
+    const provider = await detectEthereumProvider({ silent: true })
+    if (provider && window.ethereum) {
+      let accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      })
+      if (accounts) {
+        return [accounts as [string], new Web3(window.ethereum)]
+      } else {
+        return null
+      }
+    } else {
+      return null
+    }
+  }
+
   async function handleUploadButton(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files !== null) {
       let buf = await e.target.files[0].arrayBuffer();
@@ -26,19 +44,24 @@ function App() {
         "Content-Type": "application/json"},
         body: JSON.stringify({data: b64str})
       });
-      let j = await res.json()
-      console.log(j['data'])
+      let compressed = (await res.json())['data']
+
+      const acw3 = await getWeb3();
+      if (acw3) {
+        const [accounts, web3] = acw3;
+      }
     }
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex' }}>
-        <Button component="label" variant="contained" color="primary">
+      <Stack direction="row" spacing={2} sx={{p: 2}}>
+        <TextField label="Image ID" variant="outlined" />
+        <Button sx={{p:1}} component="label" variant="contained" color="primary">
           Upload Image File
           <input accept="image/png, image/jpeg" className="hiddeninput" type="file" onChange={handleUploadButton}/>
         </Button>
-      </Box>
+      </Stack>
     </ThemeProvider>
   );
 }
