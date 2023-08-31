@@ -5,6 +5,7 @@ import { NonPayableMethodObject, PayableMethodObject } from "web3-eth-contract";
 import { bigIntToUint8Array } from "web3-eth-accounts";
 import { keccak256 } from "web3-utils";
 import { Buffer } from "buffer";
+import RakugakiNFT from "./artifacts/RakugakiNFT";
 
 export async function getWeb3(): Promise<[[string], Web3] | null> {
   const provider = await detectEthereumProvider({ silent: true });
@@ -22,10 +23,22 @@ export async function getWeb3(): Promise<[[string], Web3] | null> {
   }
 }
 
+export const rakugakiLayersAddress =
+  "0x5bB5a69A8b0e80C45B5C0C003A8253623c0B5D46";
+
 export function getRakugakiLayers(web3: Web3) {
   return new web3.eth.Contract(
     RakugakiLayers,
     "0x5bB5a69A8b0e80C45B5C0C003A8253623c0B5D46",
+  );
+}
+
+export const rakugakiNFTAddress = "0xeb9779c9b66e16a95e16d28f6ed8241ba09ddd18";
+
+export function getRakugakiNFT(web3: Web3) {
+  return new web3.eth.Contract(
+    RakugakiNFT,
+    "0xeb9779c9b66e16a95e16d28f6ed8241ba09ddd18",
   );
 }
 
@@ -40,7 +53,7 @@ export async function runCall(
     from: from,
     to: contract.options.address,
     data: transaction.encodeABI(),
-    gas: await transaction.estimateGas(),
+    gas: await transaction.estimateGas({from}),
     nonce: await web3.eth.getTransactionCount(from),
     maxFeePerGas: "1000000000",
     maxPriorityFeePerGas: "1000000000",
