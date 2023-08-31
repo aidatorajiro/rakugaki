@@ -4,7 +4,7 @@ import { Alert, Box, Button, Link, Stack, TextField, Zoom, createTheme } from '@
 import base64 from 'base64-js'
 import { useState } from 'react'
 import {getWeb3, getRakugakiLayers} from "./utils";
-import Web3, { MatchPrimitiveType } from 'web3';
+import Web3 from 'web3';
 
 
 const theme = createTheme({
@@ -38,6 +38,7 @@ function DataUpload() {
           const rakugakiLayers = getRakugakiLayers(web3);
           const transaction = rakugakiLayers.methods.addImage(imageID, compressed);
           const gas = await transaction.estimateGas();
+          console.log(transaction)
           await transaction.send({from: accounts[0], gas: gas.toString(), maxFeePerGas: '1000000000', maxPriorityFeePerGas: '1000000000'});
         }
       }
@@ -47,9 +48,9 @@ function DataUpload() {
   }
 
   const [imageID, setImageID] = useState('0');
-  const [imageData, setImageData] = useState<{image: string, timestamp: MatchPrimitiveType<"uint256", unknown>}>({
+  const [imageData, setImageData] = useState<{image: string, timestamp: any}>({
     image: '',
-    timestamp: Web3.utils.toBigInt('0')
+    timestamp: Web3.utils.toBN('0')
   });
   const [errorMessage, setErrorMessage] = useState('');
 
