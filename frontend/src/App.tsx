@@ -2,8 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Box, Button, ThemeProvider, createTheme } from '@mui/material';
-import imagemin from 'imagemin';
-import imageminWebp from 'imagemin-webp';
+import base64 from 'base64-js'
 
 const theme = createTheme({
   palette: {
@@ -18,12 +17,18 @@ const theme = createTheme({
 
 
 function App() {
-  async function handleUploadButton() {
-    await imagemin.buffer(Buffer.from([]), {
-      plugins: [
-        imageminWebp({quality: 50})
-      ]
-    });
+  async function handleUploadButton(e: React.ChangeEvent<HTMLInputElement>) {
+    if (e.target.files !== null) {
+      let buf = await e.target.files[0].arrayBuffer();
+      let b64str = base64.fromByteArray(new Uint8Array(buf));
+      let res = await fetch('http://localhost:3001/compress/', {
+        method: 'POST', headers: {
+        "Content-Type": "application/json"},
+        body: JSON.stringify({data: b64str})
+      });
+      let j = await res.json()
+      console.log(j['data'])
+    }
   }
 
   return (

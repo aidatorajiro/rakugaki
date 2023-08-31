@@ -1,51 +1,37 @@
-
-import json
 import base64
-from http.server import BaseHTTPRequestHandler, HTTPServer
-from PIL import Image
 import io
+from PIL import Image
+from fastapi import FastAPI
 from compress import compress_to_webp
+from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
-class MyHandler(BaseHTTPRequestHandler):
-    """
-    Received the request as json, send the response as json
-    please you edit the your processing
-    """
-    def do_POST(self):
-        try:
-            content_len=int(self.headers.get('content-length'))
-            requestBody = json.loads(self.rfile.read(content_len).decode('utf-8'))
 
-            databytes = base64.b64decode(requestBody['data'])
-            img = Image.open(io.BytesIO(databytes))
-            compressed_data = compress_to_webp(img)
-            img.close()
 
-            response = { 'data': compressed_data }
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-            responseBody = json.dumps(response)
+class DataField(BaseModel):
+    data: str
 
-            self.wfile.write(responseBody.encode('utf-8'))
-        except Exception as e:
-            print("An error occured")
-            print(e)
-            response = { 'status' : 500,
-                         'msg' : 'An error occured' }
-            self.send_response(200)
-            self.send_header('Content-type', 'application/json')
-            self.end_headers()
-            responseBody = json.dumps(response)
+app = FastAPI()
 
-            self.wfile.write(responseBody.encode('utf-8'))
+origins = [
+    "*"
+]
 
-def run(server_class=HTTPServer, handler_class=MyHandler, server_name='localhost', port=3001):
-    server = server_class((server_name, port), handler_class)
-    server.serve_forever()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-def main():
-    run(server_name="localhost", port=3001)
-
-if __name__ == '__main__':
-    main()
+@app.post("/compress/")
+async def compress(request: DataField):
+    try:
+        databytes = base64.b64decode(request.data)
+        img = Image.open(io.BytesIO(databytes))
+        compressed_data = compress_to_webp(img)
+        img.close()
+        return { 'data': compressed_data }
+    except Exception as e:
+        return { 'error': str(e) }
