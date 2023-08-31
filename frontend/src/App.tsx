@@ -2,7 +2,6 @@ import "./App.css";
 import { Grid, ThemeProvider, createTheme } from "@mui/material";
 import DataUpload from "./DataUpload";
 import Kasane from "./Kasane";
-import { Stack } from "@mui/system";
 
 const theme = createTheme({
   palette: {

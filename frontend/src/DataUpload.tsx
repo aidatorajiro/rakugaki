@@ -2,14 +2,11 @@ import React, { useEffect } from "react";
 import "./App.css";
 import {
   Alert,
-  Box,
   Button,
   IconButton,
-  Link,
   Stack,
   TextField,
   Zoom,
-  createTheme,
 } from "@mui/material";
 import base64 from "base64-js";
 import { useState } from "react";
@@ -20,23 +17,8 @@ import {
   calculateUint256ID,
 } from "./utils";
 import Web3, { MatchPrimitiveType } from "web3";
-import { NonPayableMethodObject } from "web3-eth-contract";
-import { keccak256 } from "web3-utils";
-import { Buffer } from "buffer";
-import { bigIntToUint8Array } from "web3-eth-accounts";
 import NavigateNext from "@mui/icons-material/NavigateNext";
 import NavigateBefore from "@mui/icons-material/NavigateBefore";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#f76fd3",
-    },
-    secondary: {
-      main: "#efe35b",
-    },
-  },
-});
 
 function DataUpload() {
   async function handleUploadButton(e: React.ChangeEvent<HTMLInputElement>) {
@@ -96,7 +78,7 @@ function DataUpload() {
     try {
       const acw3 = await getWeb3();
       if (acw3) {
-        const [accounts, web3] = acw3;
+        const web3 = acw3[1];
         const rakugakiLayers = getRakugakiLayers(web3);
         const d = await rakugakiLayers.methods
           .getLayer(calculateUint256ID(imageID))
@@ -141,7 +123,7 @@ function DataUpload() {
         </IconButton>
       </Stack>
       <Zoom in={Boolean(imageData.timestamp.toString() !== "0")}>
-        <img src={imageData.image} />
+        <img alt="uploaded file" src={imageData.image} />
       </Zoom>
       <Zoom in={Boolean(imageData.timestamp.toString() === "0")}>
         <Button

@@ -2,7 +2,6 @@ import NavigateBefore from "@mui/icons-material/NavigateBefore";
 import NavigateNext from "@mui/icons-material/NavigateNext";
 import {
     Alert,
-  Box,
   Button,
   FormControl,
   IconButton,
@@ -16,7 +15,6 @@ import {
 import { useEffect, useState } from "react";
 import {
   calculateUint256ID,
-  getRakugakiLayers,
   getRakugakiNFT,
   getWeb3,
   rakugakiLayersAddress,
@@ -80,7 +78,7 @@ function Kasane() {
     try {
         const acw3 = await getWeb3();
         if (acw3) {
-          const [accounts, web3] = acw3;
+          const web3 = acw3[1];
           const rakugakiNFT = getRakugakiNFT(web3);
           const d = await rakugakiNFT.methods
             .tokenURI(calculateUint256ID(tokenID))
@@ -88,7 +86,7 @@ function Kasane() {
           setSVGData(JSON.parse(d).image);
         }
       } catch (e) {
-        setErrorMessage(String(e));
+        setSVGData("");
     }
   }
 
@@ -180,7 +178,7 @@ function Kasane() {
         </Alert>
       </Zoom>
       <Zoom in={Boolean(svgData)}>
-        <img src={svgData} />
+        <img alt="full on-chain NFT svg data" src={svgData} />
       </Zoom>
     </Stack>
   );
