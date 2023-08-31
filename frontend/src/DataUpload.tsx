@@ -3,7 +3,7 @@ import './App.css';
 import { Alert, Box, Button, IconButton, Link, Stack, TextField, Zoom, createTheme } from '@mui/material';
 import base64 from 'base64-js'
 import { useState } from 'react'
-import {getWeb3, getRakugakiLayers, runCall, calculateImageID} from "./utils";
+import {getWeb3, getRakugakiLayers, runCall, calculateUint256ID} from "./utils";
 import Web3, { MatchPrimitiveType } from 'web3';
 import { NonPayableMethodObject } from 'web3-eth-contract';
 import { keccak256 } from 'web3-utils';
@@ -42,7 +42,7 @@ function DataUpload() {
         if (acw3) {
           const [accounts, web3] = acw3;
           const rakugakiLayers = getRakugakiLayers(web3);
-          const transaction = rakugakiLayers.methods.addImage(calculateImageID(imageID), compressed);
+          const transaction = rakugakiLayers.methods.addImage(calculateUint256ID(imageID), compressed);
           await runCall(web3, rakugakiLayers, transaction, accounts[0])
           downloadImageData()
         }
@@ -79,7 +79,7 @@ function DataUpload() {
       if (acw3) {
         const [accounts, web3] = acw3;
         const rakugakiLayers = getRakugakiLayers(web3);
-        const d = await rakugakiLayers.methods.getLayer(calculateImageID(imageID)).call();
+        const d = await rakugakiLayers.methods.getLayer(calculateUint256ID(imageID)).call();
         if (d.timestamp.toString() !== '0') {
           setImageData(d)
         } else {

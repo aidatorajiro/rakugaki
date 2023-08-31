@@ -23,7 +23,7 @@ export async function getWeb3(): Promise<[[string], Web3] | null> {
   }
 
 export function getRakugakiLayers(web3: Web3) {
-    return new web3.eth.Contract(RakugakiLayers.abi, "0x5bB5a69A8b0e80C45B5C0C003A8253623c0B5D46");
+    return new web3.eth.Contract(RakugakiLayers, "0x5bB5a69A8b0e80C45B5C0C003A8253623c0B5D46");
 }
 
 export async function runCall(web3: Web3, contract: Contract<any>, transaction: NonPayableMethodObject | PayableMethodObject, from: string, value?: string) {
@@ -39,7 +39,7 @@ export async function runCall(web3: Web3, contract: Contract<any>, transaction: 
     })
 }
 
-export function calculateImageID(imageID: string) {
+export function calculateUint256ID(imageID: string) {
   let imageIDBuf = Buffer.from(new TextEncoder().encode(imageID));
   let imageIDProcessed;
   if (imageID.match(/^[0-9]+$/)) {
