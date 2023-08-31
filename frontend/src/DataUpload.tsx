@@ -7,6 +7,7 @@ import {getWeb3, getRakugakiLayers, runCall} from "./utils";
 import Web3, { MatchPrimitiveType } from 'web3';
 import { NonPayableMethodObject } from 'web3-eth-contract';
 import { keccak256 } from 'web3-utils';
+import {Buffer} from 'buffer';
 
 
 const theme = createTheme({
@@ -56,12 +57,16 @@ function DataUpload() {
 
   useEffect(() => {
     (async () => {
+      let imageIDBuf = Buffer.from(new TextEncoder().encode(imageID));
       let imageIDProcessed;
-      if (!imageID.match(/^[0-9]+$/)) {
-        imageIDProcessed = keccak256(imageID)
+      if (imageIDBuf.length === 0 || imageIDBuf.length > 32) {
+        imageIDProcessed = BigInt(keccak256(imageID))
+      } else if (!imageID.match(/^[0-9]+$/)) {
+        imageIDProcessed = BigInt("0x"+imageIDBuf.toString('hex'))
       } else {
         imageIDProcessed = imageID
       }
+      console.log(imageIDProcessed)
       try {
         const acw3 = await getWeb3();
         if (acw3) {
