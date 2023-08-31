@@ -1,4 +1,6 @@
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material";
+import NavigateBefore from "@mui/icons-material/NavigateBefore";
+import NavigateNext from "@mui/icons-material/NavigateNext";
+import { Box, Button, FormControl, IconButton, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 
 function Kasane() {
@@ -13,6 +15,18 @@ function Kasane() {
             <MenuItem value={address}>{comment} ({address})</MenuItem>
         )
     }
+
+    function increaseCount () {
+        if (tokenID.match(/^[0-9]+$/)) {
+          setTokenID((BigInt(tokenID) + BigInt('1')).toString())
+        }
+      }
+    
+      function decreaseCount () {
+        if (tokenID.match(/^[0-9]+$/) && tokenID !== '0') {
+            setTokenID((BigInt(tokenID) + BigInt('-1')).toString())
+        }
+      }
     
     function handleKasaneButton() {
         
@@ -21,6 +35,14 @@ function Kasane() {
     return (
         <Stack direction="column" spacing={2} sx={{p: 2}}>
             <TextField color="secondary" label="Token ID" variant="outlined" value={tokenID} onChange={e => setTokenID(e.target.value)}/>
+            <Stack direction="row" justifyContent="center">
+            <IconButton onClick={decreaseCount} color="primary" aria-label="add to shopping cart">
+          <NavigateBefore />
+        </IconButton>
+        <IconButton onClick={increaseCount} color="primary" aria-label="add to shopping cart">
+          <NavigateNext />
+        </IconButton>
+        </Stack>
             <TextField color="secondary" label="Other Data" variant="outlined" value={otherData} onChange={e => setOtherData(e.target.value)}/>
             <TextField color="secondary" label="Layers" variant="outlined" value={layers} onChange={e => setLayers(e.target.value)}/>
             <TextField color="secondary" label="Serial Code" variant="outlined" value={serial} onChange={e => setSerial(e.target.value)}/>
