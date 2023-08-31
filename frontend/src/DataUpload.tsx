@@ -8,7 +8,7 @@ import Web3, { MatchPrimitiveType } from 'web3';
 import { NonPayableMethodObject } from 'web3-eth-contract';
 import { keccak256 } from 'web3-utils';
 import {Buffer} from 'buffer';
-
+import { bigIntToUint8Array } from 'web3-eth-accounts';
 
 const theme = createTheme({
   palette: {
@@ -59,12 +59,17 @@ function DataUpload() {
     (async () => {
       let imageIDBuf = Buffer.from(new TextEncoder().encode(imageID));
       let imageIDProcessed;
-      if (imageIDBuf.length === 0 || imageIDBuf.length > 32) {
+      if (imageID.match(/^[0-9]+$/)) {
+        let arr = bigIntToUint8Array(BigInt(imageID))
+        if (arr.length > 32) {
+          imageIDProcessed = BigInt(keccak256(arr))
+        } else {
+          imageIDProcessed = imageID
+        }
+      } else if (imageIDBuf.length === 0 || imageIDBuf.length > 32) {
         imageIDProcessed = BigInt(keccak256(imageID))
-      } else if (!imageID.match(/^[0-9]+$/)) {
-        imageIDProcessed = BigInt("0x"+imageIDBuf.toString('hex'))
       } else {
-        imageIDProcessed = imageID
+        imageIDProcessed = BigInt("0x"+imageIDBuf.toString('hex'))
       }
       console.log(imageIDProcessed)
       try {
@@ -80,7 +85,7 @@ function DataUpload() {
           }
         }
       } catch (e) {
-
+        setErrorMessage(String(e))
       }
     })();
   },[imageID])
