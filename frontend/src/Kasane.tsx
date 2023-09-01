@@ -160,6 +160,7 @@ function Kasane() {
           )}
         </Select>
       </FormControl>
+      <Zoom in={!Boolean(svgData)}>
       <Button
         sx={{ p: 1 }}
         component="label"
@@ -169,6 +170,7 @@ function Kasane() {
       >
         Kasaneru
       </Button>
+      </Zoom>
       <Zoom in={Boolean(errorMessage)}>
         <Alert severity="error">
           {errorMessage}
