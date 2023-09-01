@@ -81,9 +81,10 @@ export function calculateUint256ID(imageID: string) {
       imageIDProcessed = imageID;
     }
   } else if (imageIDBuf.length === 0 || imageIDBuf.length > 32) {
-    imageIDProcessed = BigInt(keccak256(imageID));
+    imageIDProcessed = BigInt(keccak256(imageIDBuf));
   } else {
     imageIDProcessed = BigInt("0x" + imageIDBuf.toString("hex"));
   }
+  console.log(imageIDProcessed)
   return imageIDProcessed;
 }
