@@ -71,11 +71,11 @@ function Kasane() {
         generator,
       );
       await runCall(web3, rakugakiNFT, transaction, accounts[0]);
-      downloadSVGData();
+      downloadSVGData(tokenID);
     }
   }
 
-  async function downloadSVGData() {
+  async function downloadSVGData(tokenID: string) {
     try {
         const acw3 = await getWeb3();
         if (acw3) {
@@ -98,7 +98,7 @@ function Kasane() {
   }
 
   useEffect(() => {
-    downloadSVGData();
+    downloadSVGData(tokenID);
   }, [tokenID]);
 
   return (

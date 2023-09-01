@@ -50,7 +50,7 @@ function DataUpload() {
             compressed,
           );
           await runCall(web3, rakugakiLayers, transaction, accounts[0]);
-          downloadImageData();
+          downloadImageData(imageID);
         }
       }
     } catch (e) {
@@ -80,7 +80,7 @@ function DataUpload() {
     }
   }
 
-  async function downloadImageData() {
+  async function downloadImageData(imageID: string) {
     try {
       const acw3 = await getWeb3();
       if (acw3) {
@@ -101,7 +101,7 @@ function DataUpload() {
   }
 
   useEffect(() => {
-    downloadImageData();
+    downloadImageData(imageID);
   }, [imageID]);
 
   return (
