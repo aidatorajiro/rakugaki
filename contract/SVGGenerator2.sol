@@ -11,6 +11,15 @@ contract SVGGeneratorDisp2 is ISVGGenerator {
         view
         returns (string memory)
     {
+        uint[] memory arr = new uint[](5);
+        for (uint i = 0; i < meta.layers.length; i++) {
+            arr[i] = meta.layers[i];
+        }
+        uint j = 0;
+        for (uint i = meta.layers.length; i < 5; i++) {
+            arr[i] = arr[j];
+            j++;
+        }
         return string(abi.encodePacked(
 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">',
 '    <filter id="image">',
@@ -19,10 +28,10 @@ contract SVGGeneratorDisp2 is ISVGGenerator {
 '        <feImage result="img3" href="', meta.layers_database.getLayer(meta.layers[2]).image, '"/>',
 '        <feImage result="img4" href="', meta.layers_database.getLayer(meta.layers[3]).image, '"/>',
 '        <feImage result="img5" href="', meta.layers_database.getLayer(meta.layers[4]).image, '"/>',
-'        <feDisplacementMap in="SourceGraphic" in2="img1" result="final" scale="2" xChannelSelector="R" yChannelSelector="G" />',
-'        <feComposite in="final" in2="img1" operator="arithmetic" result="final" k1="2" k2="1" k3="1" k4="0" />',
+'        <feDisplacementMap in="SourceGraphic" in2="img3" result="final" scale="2" xChannelSelector="R" yChannelSelector="G" />',
+'        <feComposite in="final" in2="img1" operator="arithmetic" result="final" k1="2" k2="1" k3="0.1" k4="0" />',
 '        <feComposite in="final" in2="img2" operator="arithmetic" result="final" k1="2" k2="1" k3="0.1" k4="0" />',
-'        <feComposite in="final" in2="img3" operator="arithmetic" result="final" k1="2" k2="1" k3="0.1" k4="0" />',
+'        <feComposite in="final" in2="img3" operator="arithmetic" result="final" k1="2" k2="1" k3="1" k4="0" />',
 '        <feComposite in="final" in2="img4" operator="arithmetic" result="final" k1="2" k2="1" k3="0.1" k4="0" />',
 '        <feComposite in="final" in2="img5" operator="arithmetic" result="final" k1="2" k2="1" k3="0.1" k4="0" />',
 '        <feComponentTransfer in="final" result="final">',

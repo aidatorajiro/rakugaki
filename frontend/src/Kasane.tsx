@@ -164,11 +164,15 @@ function Kasane() {
         >
           {addressChoice(
             "0x06ae046986A584514E343fe6E3494D15E713E37a",
-            "disp - レイヤー上限2枚",
+            "disp - レイヤー2枚",
           )}
           {addressChoice(
             "0x1DDD1318d7EeB90C2B9B16a688DCd108781BFFB3",
-            "serialkasane - レイヤー上限5枚",
+            "serialkasane - レイヤー5枚",
+          )}
+          {addressChoice(
+            "0x3e153313A12c528E988b544Ea39f2c0D51E5399F",
+            "serialkasane ver.2 - レイヤー1枚から5枚",
           )}
         </Select>
       </FormControl>

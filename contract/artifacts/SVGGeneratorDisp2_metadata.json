@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.21+commit.d9974bed"
+		"version": "0.8.18+commit.87f61d96"
 	},
 	"language": "Solidity",
 	"output": {
@@ -67,7 +67,7 @@
 		"compilationTarget": {
 			"SVGGenerator2.sol": "SVGGeneratorDisp2"
 		},
-		"evmVersion": "shanghai",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -80,11 +80,11 @@
 	},
 	"sources": {
 		"SVGGenerator2.sol": {
-			"keccak256": "0x0612bc3c9ded38603451006a912d9d528e6dd5013a0ac8f0961424ae77a3baee",
+			"keccak256": "0x9c9736a8d7f359df61bcab41910bdd94264ac6caeb45ee05cac0ae0f59843444",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://27b4b4921d34b956c01455711d9eeac3cc4348ef44f985cc9762986e9bdc10a1",
-				"dweb:/ipfs/QmcYTSEfetybGH1cQ7CN8ecsi78id51bEmjHH8xW1AqrZH"
+				"bzz-raw://aff6c52bc9afea96226c04383af5122e8ea0bd8790ac55cbc6c2c43d697be17c",
+				"dweb:/ipfs/QmdnQonazb6c5ubVeMnW94efpPVdBUoqqFncXhk3azNSjs"
 			]
 		},
 		"defs.sol": {
