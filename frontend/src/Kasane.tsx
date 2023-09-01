@@ -53,6 +53,7 @@ function Kasane() {
   }
 
   async function handleKasaneButton() {
+    try {
     const acpr = await getProvider();
     if (acpr) {
       const [accounts, web3] = acpr;
@@ -70,6 +71,9 @@ function Kasane() {
         generator,
       )).wait();
       downloadSVGData(tokenID);
+    }
+    } catch (e) {
+      setErrorMessage(String(e));
     }
   }
 
