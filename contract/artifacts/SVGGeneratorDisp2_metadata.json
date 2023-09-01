@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.18+commit.87f61d96"
+		"version": "0.8.21+commit.d9974bed"
 	},
 	"language": "Solidity",
 	"output": {
@@ -65,9 +65,9 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"SVGGenerator.sol": "SVGGeneratorDisp2"
+			"SVGGenerator2.sol": "SVGGeneratorDisp2"
 		},
-		"evmVersion": "paris",
+		"evmVersion": "shanghai",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -79,20 +79,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"SVGGenerator.sol": {
-			"keccak256": "0xa70d2d8c248645dfac58b84b972e8537e5898b4c26eb805f16c6c7c517626ffe",
+		"SVGGenerator2.sol": {
+			"keccak256": "0x4d241d112027fe581802115f94f624156223f3f1600347f596c724cf2b90de7a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://033c86492ab391e48d54cc51b7d73a8b5478dff55520d9e439f698ee731423f6",
-				"dweb:/ipfs/QmQYPwYRrBJ7Z1hbgPQTgKG3rHZdBXEXo7EWYz23BVtHja"
+				"bzz-raw://b644431282b7b20d6225f955741560b6b8ea9dfe159ce5a6c4d4d960b529eae6",
+				"dweb:/ipfs/QmPHwcfmmgkriimaWodXuEVYXABtR7w9L8QztiLJikLtL2"
 			]
 		},
 		"defs.sol": {
-			"keccak256": "0x36cb88d52d63fabcec797c2d70ad8071a04a31c1466035cce9b7b894d4ce9efb",
+			"keccak256": "0xd12f5fb663a9c9c7da84b1379de07913cff4e70447e3807da54ee8bde16a2b44",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://26a76e60b7efa1c6d89eedb457b69cb6caacd9c6f21f363920d92cf90c24f176",
-				"dweb:/ipfs/QmfCQXn64q681WNzyQ1AduM8DztACbbDiBEbWBWMhE7WK1"
+				"bzz-raw://5bc00d53a1ff12a72f14be84c0e85f5d07547af417ee0ee2c0e3e2f022729fcb",
+				"dweb:/ipfs/QmSJmfhWmisQk8fAR3pZBNLoz9LBnRwXgmctEK9FiEww3M"
 			]
 		}
 	},
