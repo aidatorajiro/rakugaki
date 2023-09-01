@@ -166,6 +166,10 @@ function Kasane() {
             "0x06ae046986A584514E343fe6E3494D15E713E37a",
             "disp - レイヤー上限2枚",
           )}
+          {addressChoice(
+            "0x1DDD1318d7EeB90C2B9B16a688DCd108781BFFB3",
+            "serialkasane - レイヤー上限5枚",
+          )}
         </Select>
       </FormControl>
       <Zoom in={!Boolean(svgData)}>
