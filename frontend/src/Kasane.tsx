@@ -168,11 +168,15 @@ function Kasane() {
           )}
           {addressChoice(
             "0x1DDD1318d7EeB90C2B9B16a688DCd108781BFFB3",
-            "serialkasane - レイヤー5枚",
+            "serialkasane - レイヤー5枚、シリアルコード表示",
           )}
           {addressChoice(
             "0x3e153313A12c528E988b544Ea39f2c0D51E5399F",
-            "serialkasane ver.2 - レイヤー1枚から5枚",
+            "serialkasane ver.2 - レイヤー1枚から5枚、シリアルコード表示",
+          )}
+          {addressChoice(
+            "0xEB9a3727794bBf96e95727D59a3a09937684c72E",
+            "普通の重ね ver.1 - レイヤー枚数任意、シリアルコード表示",
           )}
         </Select>
       </FormControl>
