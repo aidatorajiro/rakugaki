@@ -164,7 +164,7 @@ function Kasane() {
         >
           {addressChoice(
             "0x06ae046986A584514E343fe6E3494D15E713E37a",
-            "disp 2L",
+            "disp - レイヤー上限2枚",
           )}
         </Select>
       </FormControl>
