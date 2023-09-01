@@ -20,6 +20,7 @@ import {
   rakugakiLayersAddress,
   runCall,
 } from "./utils";
+import { ResponseError } from "web3";
 
 function Kasane() {
   const [tokenID, setTokenID] = useState("0");
@@ -86,7 +87,13 @@ function Kasane() {
           setSVGData(JSON.parse(d).image);
         }
       } catch (e) {
-        setSVGData("");
+        if (e instanceof ResponseError) {
+          if (e.data === undefined) {
+            setSVGData("");
+          } else {
+            setSVGData("genfail.png");
+          }
+        }
     }
   }
 
@@ -180,7 +187,7 @@ function Kasane() {
         </Alert>
       </Zoom>
       <Zoom in={Boolean(svgData)}>
-        <img alt="full on-chain NFT svg data" src={svgData} />
+        <img alt={svgData !== "genfail.png" ? 'full on-chain NFT svg data' : 'failed to generate SVG data !'} src={svgData} />
       </Zoom>
     </Stack>
   );
