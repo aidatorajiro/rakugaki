@@ -11,12 +11,10 @@ import {
 import base64 from "base64-js";
 import { useState } from "react";
 import {
-  getWeb3,
+  getProvider,
   getRakugakiLayers,
-  runCall,
   calculateUint256ID,
 } from "./utils";
-import Web3, { MatchPrimitiveType } from "web3";
 import NavigateNext from "@mui/icons-material/NavigateNext";
 import NavigateBefore from "@mui/icons-material/NavigateBefore";
 
@@ -41,15 +39,14 @@ function DataUpload() {
         });
         let compressed: string = (await res.json())["data"];
 
-        const acw3 = await getWeb3();
+        const acw3 = await getProvider();
         if (acw3) {
           const [accounts, web3] = acw3;
-          const rakugakiLayers = getRakugakiLayers(web3);
-          const transaction = rakugakiLayers.methods.addImage(
+          const rakugakiLayers = await getRakugakiLayers(web3);
+          await (await rakugakiLayers.addImage(
             calculateUint256ID(imageID),
             compressed,
-          );
-          await runCall(web3, rakugakiLayers, transaction, accounts[0]);
+          )).wait();
           downloadImageData(imageID);
         }
       }
@@ -61,10 +58,10 @@ function DataUpload() {
   const [imageID, setImageID] = useState("0");
   const [imageData, setImageData] = useState<{
     image: string;
-    timestamp: MatchPrimitiveType<"uint256", unknown>;
+    timestamp: BigInt;
   }>({
     image: "",
-    timestamp: Web3.utils.toBigInt("0"),
+    timestamp: BigInt("0"),
   });
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -82,18 +79,13 @@ function DataUpload() {
 
   async function downloadImageData(imageID: string) {
     try {
-      const acw3 = await getWeb3();
-      if (acw3) {
-        const web3 = acw3[1];
-        const rakugakiLayers = getRakugakiLayers(web3);
-        const d = await rakugakiLayers.methods
-          .getLayer(calculateUint256ID(imageID))
-          .call();
-        if (d.timestamp.toString() !== "0") {
-          setImageData(d);
-        } else {
-          setImageData(d);
-        }
+      const acpr = await getProvider();
+      if (acpr) {
+        const web3 = acpr[1];
+        const rakugakiLayers = await getRakugakiLayers(web3);
+        const d = await rakugakiLayers
+          .getLayer(calculateUint256ID(imageID));
+        setImageData(d);
       }
     } catch (e) {
       setErrorMessage(String(e));

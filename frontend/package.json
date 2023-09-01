@@ -69,7 +69,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "lint": "npx prettier --write 'src/**/*.{ts, tsx}' && eslint --fix --ext .ts --ext .tsx src"
+    "lint": "npx prettier --write 'src/**/*.{ts, tsx}' && eslint --fix --ext .ts --ext .tsx src",
+    "typechain": "typechain --target=ethers-v6 --out-dir src/contracts ../contract/artifacts/RakugakiNFT.json ../contract/artifacts/RakugakiLayers.json"
   },
   "eslintConfig": {
     "extends": [
@@ -95,7 +96,7 @@
     "@metamask/detect-provider": "^2.0.0",
     "@metamask/providers": "^11.1.1",
     "@mui/icons-material": "^5.14.7",
-    "@types/web3": "^1.2.2",
+    "@typechain/ethers-v6": "^0.5.0",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
     "assert": "^2.0.0",
@@ -106,14 +107,15 @@
     "constants-browserify": "^1.0.0",
     "crypto-browserify": "^3.12.0",
     "eslint-config-prettier": "^9.0.0",
+    "ethers": "^6.7.1",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "prettier": "^3.0.3",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
+    "typechain": "^8.3.1",
     "url": "^0.11.1",
-    "util": "^0.12.5",
-    "web3": "^4.1.1"
+    "util": "^0.12.5"
   },
   "jest": {
     "roots": [

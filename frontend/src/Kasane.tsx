@@ -16,11 +16,9 @@ import { useEffect, useState } from "react";
 import {
   calculateUint256ID,
   getRakugakiNFT,
-  getWeb3,
+  getProvider,
   rakugakiLayersAddress,
-  runCall,
 } from "./utils";
-import { ResponseError } from "web3";
 
 function Kasane() {
   const [tokenID, setTokenID] = useState("0");
@@ -54,46 +52,46 @@ function Kasane() {
   }
 
   async function handleKasaneButton() {
-    const acw3 = await getWeb3();
-    if (acw3) {
-      const [accounts, web3] = acw3;
-      const rakugakiNFT = getRakugakiNFT(web3);
+    const acpr = await getProvider();
+    if (acpr) {
+      const [accounts, web3] = acpr;
+      const rakugakiNFT = await getRakugakiNFT(web3);
       const p = (x: string) =>
         (JSON.parse(x) as [string | number])
           .map(String)
           .map(calculateUint256ID);
-      const transaction = rakugakiNFT.methods.mint(
+      await (await rakugakiNFT.mint(
         tokenID,
         JSON.parse(otherData),
         p(layers),
         serial,
         rakugakiLayersAddress,
         generator,
-      );
-      await runCall(web3, rakugakiNFT, transaction, accounts[0]);
+      )).wait();
       downloadSVGData(tokenID);
     }
   }
 
   async function downloadSVGData(tokenID: string) {
     try {
-        const acw3 = await getWeb3();
+        const acw3 = await getProvider();
         if (acw3) {
           const web3 = acw3[1];
-          const rakugakiNFT = getRakugakiNFT(web3);
-          const d = await rakugakiNFT.methods
-            .tokenURI(calculateUint256ID(tokenID))
-            .call();
+          const rakugakiNFT = await getRakugakiNFT(web3);
+          const d = await rakugakiNFT
+            .tokenURI(calculateUint256ID(tokenID));
           setSVGData(JSON.parse(d).image);
         }
       } catch (e) {
-        if (e instanceof ResponseError) {
+        console.log(e)
+        setSVGData("");
+        /*if (e instanceof ResponseError) {
           if (e.data === undefined) {
             setSVGData("");
           } else {
             setSVGData("genfail.png");
           }
-        }
+        }*/
     }
   }
 
