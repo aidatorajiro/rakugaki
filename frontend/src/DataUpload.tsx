@@ -39,9 +39,9 @@ function DataUpload() {
         });
         let compressed: string = (await res.json())["data"];
 
-        const acw3 = await getProvider();
-        if (acw3) {
-          const [accounts, web3] = acw3;
+        const acpr = await getProvider();
+        if (acpr) {
+          const [accounts, web3] = acpr;
           const rakugakiLayers = await getRakugakiLayers(web3);
           await (await rakugakiLayers.addImage(
             calculateUint256ID(imageID),

@@ -19,6 +19,7 @@ import {
   getProvider,
   rakugakiLayersAddress,
 } from "./utils";
+import * as ethers from "ethers";
 
 function Kasane() {
   const [tokenID, setTokenID] = useState("0");
@@ -74,24 +75,22 @@ function Kasane() {
 
   async function downloadSVGData(tokenID: string) {
     try {
-        const acw3 = await getProvider();
-        if (acw3) {
-          const web3 = acw3[1];
+        const acpr = await getProvider();
+        if (acpr) {
+          const web3 = acpr[1];
           const rakugakiNFT = await getRakugakiNFT(web3);
           const d = await rakugakiNFT
             .tokenURI(calculateUint256ID(tokenID));
           setSVGData(JSON.parse(d).image);
         }
       } catch (e) {
-        console.log(e)
-        setSVGData("");
-        /*if (e instanceof ResponseError) {
-          if (e.data === undefined) {
-            setSVGData("");
-          } else {
+        if (ethers.isError(e, "CALL_EXCEPTION")) {
+          if (e.data !== null) {
             setSVGData("genfail.png");
+          } else {
+            setSVGData("");
           }
-        }*/
+        }
     }
   }
 
