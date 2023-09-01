@@ -47,7 +47,7 @@ function DataUpload() {
             calculateUint256ID(imageID),
             compressed,
           )).wait();
-          downloadImageData(imageID);
+          downloadImageData();
         }
       }
     } catch (e) {
@@ -77,7 +77,7 @@ function DataUpload() {
     }
   }
 
-  async function downloadImageData(imageID: string) {
+  async function downloadImageData() {
     try {
       const acpr = await getProvider();
       if (acpr) {
@@ -93,7 +93,7 @@ function DataUpload() {
   }
 
   useEffect(() => {
-    downloadImageData(imageID);
+    downloadImageData();
   }, [imageID]);
 
   return (

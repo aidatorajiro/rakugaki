@@ -70,14 +70,14 @@ function Kasane() {
         rakugakiLayersAddress,
         generator,
       )).wait();
-      downloadSVGData(tokenID);
+      downloadSVGData();
     }
     } catch (e) {
       setErrorMessage(String(e));
     }
   }
 
-  async function downloadSVGData(tokenID: string) {
+  async function downloadSVGData() {
     try {
         const acpr = await getProvider();
         if (acpr) {
@@ -99,7 +99,7 @@ function Kasane() {
   }
 
   useEffect(() => {
-    downloadSVGData(tokenID);
+    downloadSVGData();
   }, [tokenID]);
 
   return (
