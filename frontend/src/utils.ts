@@ -3,7 +3,9 @@ import { Buffer } from "buffer";
 import { BrowserProvider, keccak256 } from "ethers";
 import { RakugakiLayers__factory, RakugakiNFT__factory } from "./contracts";
 
-export async function getProvider(): Promise<[[string], BrowserProvider] | null> {
+export async function getProvider(): Promise<
+  [[string], BrowserProvider] | null
+> {
   const provider = await detectEthereumProvider({ silent: true });
   if (provider && window.ethereum) {
     let accounts = await window.ethereum.request({
@@ -23,13 +25,19 @@ export const rakugakiLayersAddress =
   "0x5bB5a69A8b0e80C45B5C0C003A8253623c0B5D46";
 
 export async function getRakugakiLayers(provider: BrowserProvider) {
-  return RakugakiLayers__factory.connect(rakugakiLayersAddress, await provider.getSigner());
+  return RakugakiLayers__factory.connect(
+    rakugakiLayersAddress,
+    await provider.getSigner(),
+  );
 }
 
 export const rakugakiNFTAddress = "0xeb9779c9b66e16a95e16d28f6ed8241ba09ddd18";
 
 export async function getRakugakiNFT(provider: BrowserProvider) {
-  return RakugakiNFT__factory.connect(rakugakiNFTAddress, await provider.getSigner())
+  return RakugakiNFT__factory.connect(
+    rakugakiNFTAddress,
+    await provider.getSigner(),
+  );
 }
 
 /*
@@ -54,7 +62,9 @@ export async function runCall(
 
 export function bnToBuf(bn: BigInt) {
   var hex = bn.toString(16);
-  if (hex.length % 2) { hex = '0' + hex; }
+  if (hex.length % 2) {
+    hex = "0" + hex;
+  }
 
   var len = hex.length / 2;
   var u8 = new Uint8Array(len);
@@ -62,7 +72,7 @@ export function bnToBuf(bn: BigInt) {
   var i = 0;
   var j = 0;
   while (i < len) {
-    u8[i] = parseInt(hex.slice(j, j+2), 16);
+    u8[i] = parseInt(hex.slice(j, j + 2), 16);
     i += 1;
     j += 2;
   }
@@ -85,6 +95,6 @@ export function calculateUint256ID(imageID: string) {
   } else {
     imageIDProcessed = BigInt("0x" + imageIDBuf.toString("hex"));
   }
-  console.log(imageIDProcessed)
+  console.log(imageIDProcessed);
   return imageIDProcessed;
 }

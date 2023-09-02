@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import "./App.css";
 import {
   Alert,
-  Box,
   Button,
   IconButton,
   Stack,
   TextField,
+  Typography,
   Zoom,
 } from "@mui/material";
 import base64 from "base64-js";
@@ -42,8 +42,8 @@ function DataUpload() {
 
         const acpr = await getProvider();
         if (acpr) {
-          const [accounts, web3] = acpr;
-          const rakugakiLayers = await getRakugakiLayers(web3);
+          const prov = acpr[1];
+          const rakugakiLayers = await getRakugakiLayers(prov);
           await (await rakugakiLayers.addImage(
             calculateUint256ID(imageID),
             compressed,
@@ -82,8 +82,8 @@ function DataUpload() {
     try {
       const acpr = await getProvider();
       if (acpr) {
-        const web3 = acpr[1];
-        const rakugakiLayers = await getRakugakiLayers(web3);
+        const prov = acpr[1];
+        const rakugakiLayers = await getRakugakiLayers(prov);
         const d = await rakugakiLayers
           .getLayer(calculateUint256ID(imageID));
         setImageData(d);
@@ -99,6 +99,9 @@ function DataUpload() {
 
   return (
     <Stack direction="column" spacing={2} sx={{ p: 2 }}>
+      <Typography variant="h4">
+        Data Upload
+      </Typography>
       <TextField
         label="Image ID"
         variant="outlined"
@@ -121,7 +124,9 @@ function DataUpload() {
           <NavigateNext />
         </IconButton>
       </Stack>
-
+      <Zoom in={Boolean(imageData.timestamp.toString() !== "0")}>
+          <img alt="uploaded file" src={imageData.image} />
+      </Zoom>
       <Zoom in={Boolean(imageData.timestamp.toString() === "0")}>
         <Button
           sx={{ p: 1 }}
@@ -137,9 +142,6 @@ function DataUpload() {
             onChange={handleUploadButton}
           />
         </Button>
-      </Zoom>
-      <Zoom in={Boolean(imageData.timestamp.toString() !== "0")}>
-          <img alt="uploaded file" src={imageData.image} />
       </Zoom>
       <Zoom in={Boolean(errorMessage)}>
         <Alert severity="error">

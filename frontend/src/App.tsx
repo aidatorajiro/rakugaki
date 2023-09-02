@@ -1,5 +1,5 @@
 import "./App.css";
-import { Divider, Grid, ThemeProvider, createTheme } from "@mui/material";
+import { Grid, ThemeProvider, createTheme } from "@mui/material";
 import DataUpload from "./DataUpload";
 import Kasane from "./Kasane";
 
