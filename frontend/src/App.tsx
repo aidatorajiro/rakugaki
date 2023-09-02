@@ -1,5 +1,5 @@
 import "./App.css";
-import { Grid, ThemeProvider, createTheme } from "@mui/material";
+import { Divider, Grid, ThemeProvider, createTheme } from "@mui/material";
 import DataUpload from "./DataUpload";
 import Kasane from "./Kasane";
 
@@ -17,11 +17,11 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Grid container spacing="3em">
-        <Grid item xs={6}>
+      <Grid container>
+        <Grid item xs={12} lg={6}>
           <DataUpload />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} lg={6}>
           <Kasane />
         </Grid>
       </Grid>

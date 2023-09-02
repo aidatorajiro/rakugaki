@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import {
   Alert,
+  Box,
   Button,
   IconButton,
   Stack,
@@ -120,9 +121,7 @@ function DataUpload() {
           <NavigateNext />
         </IconButton>
       </Stack>
-      <Zoom in={Boolean(imageData.timestamp.toString() !== "0")}>
-        <img alt="uploaded file" src={imageData.image} />
-      </Zoom>
+
       <Zoom in={Boolean(imageData.timestamp.toString() === "0")}>
         <Button
           sx={{ p: 1 }}
@@ -138,6 +137,9 @@ function DataUpload() {
             onChange={handleUploadButton}
           />
         </Button>
+      </Zoom>
+      <Zoom in={Boolean(imageData.timestamp.toString() !== "0")}>
+          <img alt="uploaded file" src={imageData.image} />
       </Zoom>
       <Zoom in={Boolean(errorMessage)}>
         <Alert severity="error">

@@ -3,9 +3,9 @@ pragma solidity 0.8;
 
 import "defs.sol";
 
-// 0x06ae046986A584514E343fe6E3494D15E713E37a
+// v1 0x06ae046986A584514E343fe6E3494D15E713E37a
 
-contract SVGGeneratorDisp2 is ISVGGenerator {
+contract DispKasane is ISVGGenerator {
     function generate(NFTMeta memory meta)
         public
         view

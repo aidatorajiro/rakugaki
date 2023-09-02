@@ -65,7 +65,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"SVGGenerator3.sol": "SVGGeneratorDisp2"
+			"SVGGenerator2.sol": "SerialKasane"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -79,36 +79,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/utils/Strings.sol": {
-			"keccak256": "0x3088eb2868e8d13d89d16670b5f8612c4ab9ff8956272837d8e90106c59c14a0",
+		"SVGGenerator2.sol": {
+			"keccak256": "0x237b0c59bde1409197b8ae7ca97fe609e9091b7340d361fda5bfaf906ccda6d5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b81d9ff6559ea5c47fc573e17ece6d9ba5d6839e213e6ebc3b4c5c8fe4199d7f",
-				"dweb:/ipfs/QmPCW1bFisUzJkyjroY3yipwfism9RRCigCcK1hbXtVM8n"
-			]
-		},
-		"@openzeppelin/contracts/utils/math/Math.sol": {
-			"keccak256": "0xe4455ac1eb7fc497bb7402579e7b4d64d928b846fce7d2b6fde06d366f21c2b3",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://cc8841b3cd48ad125e2f46323c8bad3aa0e88e399ec62acb9e57efa7e7c8058c",
-				"dweb:/ipfs/QmSqE4mXHA2BXW58deDbXE8MTcsL5JSKNDbm23sVQxRLPS"
-			]
-		},
-		"@openzeppelin/contracts/utils/math/SignedMath.sol": {
-			"keccak256": "0xf92515413956f529d95977adc9b0567d583c6203fc31ab1c23824c35187e3ddc",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://c50fcc459e49a9858b6d8ad5f911295cb7c9ab57567845a250bf0153f84a95c7",
-				"dweb:/ipfs/QmcEW85JRzvDkQggxiBBLVAasXWdkhEysqypj9EaB6H2g6"
-			]
-		},
-		"SVGGenerator3.sol": {
-			"keccak256": "0x29709b90321d9243666742c0b86f16b05747db382440df6e6a736530cb4117df",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://080f4676b7f7e0ab0376643225fbe4d3b2c6cb229d62f4241cc3234a2e6c642c",
-				"dweb:/ipfs/QmZh9Z6cxg4QB8fxm1NwRdQoCwD6Q3Lgm8Gv7ZRf3XYaG7"
+				"bzz-raw://32e48a57641e7307ae2782666f3aab8d344eaec849a02b9ff21ba11452e74bc8",
+				"dweb:/ipfs/QmfV6DaqyqYssUnio7cEi7SiwsaJjGr3NWUqV1gciARdEw"
 			]
 		},
 		"defs.sol": {

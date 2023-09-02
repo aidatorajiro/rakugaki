@@ -65,7 +65,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"SVGGenerator3.sol": "SVGGeneratorDisp2"
+			"SVGGenerator3.sol": "FutunoKasane"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -104,11 +104,11 @@
 			]
 		},
 		"SVGGenerator3.sol": {
-			"keccak256": "0x29709b90321d9243666742c0b86f16b05747db382440df6e6a736530cb4117df",
+			"keccak256": "0xacd81bf0aab50af84b7e2d880efc9a2ac1ae9ab51690168851105f86f26f61a1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://080f4676b7f7e0ab0376643225fbe4d3b2c6cb229d62f4241cc3234a2e6c642c",
-				"dweb:/ipfs/QmZh9Z6cxg4QB8fxm1NwRdQoCwD6Q3Lgm8Gv7ZRf3XYaG7"
+				"bzz-raw://d2d8afc110a4ae1f298c422784b218bb78c103f457a7c04afa5b9102d6c2aec7",
+				"dweb:/ipfs/QmbL8q563oDDJoPSsZPGGVJj1BwABQyXbkssG3qU8DwGqv"
 			]
 		},
 		"defs.sol": {

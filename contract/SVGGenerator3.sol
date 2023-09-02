@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 
 // 0x06ae046986A584514E343fe6E3494D15E713E37a
 
-contract SVGGeneratorDisp2 is ISVGGenerator {
+contract FutunoKasane is ISVGGenerator {
     function generate(NFTMeta memory meta)
         public
         view
@@ -25,7 +25,7 @@ contract SVGGeneratorDisp2 is ISVGGenerator {
 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">',
 '    <filter id="image">',
 partA,
-'        <feDisplacementMap in2="img3" in="SourceGraphic" scale="50" xChannelSelector="R" yChannelSelector="G" result="final"/>',
+'        <feDisplacementMap in2="img', Strings.toString(meta.layers.length / 2), '" in="SourceGraphic" scale="50" xChannelSelector="R" yChannelSelector="G" result="final"/>',
 partB,
 '        <feComponentTransfer in="final" result="final">',
 '          <feFuncR type="gamma" amplitude="1" exponent="2" offset="0"></feFuncR>',

@@ -35,7 +35,7 @@ function Kasane() {
   function addressChoice(address: string, comment: string) {
     return (
       <MenuItem value={address}>
-        {comment} ({address})
+        {comment}
       </MenuItem>
     );
   }
@@ -168,15 +168,23 @@ function Kasane() {
           )}
           {addressChoice(
             "0x1DDD1318d7EeB90C2B9B16a688DCd108781BFFB3",
-            "serialkasane - レイヤー5枚、シリアルコード表示",
+            "serialkasane ver.1 - レイヤー5枚",
           )}
           {addressChoice(
             "0x3e153313A12c528E988b544Ea39f2c0D51E5399F",
-            "serialkasane ver.2 - レイヤー1枚から5枚、シリアルコード表示",
+            "serialkasane ver.2 - レイヤー1枚から5枚",
+          )}
+          {addressChoice(
+            "0x8c93fD1537529cEd54F8c0D43dC644883Fc55E4b",
+            "serialkasane ver.3 - レイヤー1枚から5枚",
           )}
           {addressChoice(
             "0xEB9a3727794bBf96e95727D59a3a09937684c72E",
-            "普通の重ね ver.1 - レイヤー枚数任意、シリアルコード表示",
+            "普通の重ね ver.1 - レイヤー枚数4以上",
+          )}
+          {addressChoice(
+            "0xEB9a3727794bBf96e95727D59a3a09937684c72E",
+            "普通の重ね ver.2 - レイヤー枚数任意",
           )}
         </Select>
       </FormControl>
@@ -191,6 +199,9 @@ function Kasane() {
         Kasaneru
       </Button>
       </Zoom>
+      <Zoom in={Boolean(svgData)}>
+        <img alt={svgData !== "genfail.png" ? 'full on-chain NFT svg data' : 'failed to generate SVG data !'} src={svgData} />
+      </Zoom>
       <Zoom in={Boolean(errorMessage)}>
         <Alert severity="error">
           {errorMessage}
@@ -198,9 +209,6 @@ function Kasane() {
             CLOSE
           </Button>
         </Alert>
-      </Zoom>
-      <Zoom in={Boolean(svgData)}>
-        <img alt={svgData !== "genfail.png" ? 'full on-chain NFT svg data' : 'failed to generate SVG data !'} src={svgData} />
       </Zoom>
     </Stack>
   );
