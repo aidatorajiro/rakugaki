@@ -193,7 +193,7 @@ function Kasane() {
             "普通の重ね ver.1 - レイヤー枚数4以上",
           )}
           {addressChoice(
-            "0xEB9a3727794bBf96e95727D59a3a09937684c72E",
+            "0xd3884bcbd37a280ffd7fa344bb72150f6dc85362",
             "普通の重ね ver.2 - レイヤー枚数任意",
           )}
         </Select>
