@@ -101,7 +101,7 @@ function Kasane() {
 
   useEffect(() => {
     downloadSVGData();
-  }, [tokenID]);[tokenID]
+  }, [tokenID]);
 
   return (
     <Stack direction="column" spacing={2} sx={{ p: 2 }}>
