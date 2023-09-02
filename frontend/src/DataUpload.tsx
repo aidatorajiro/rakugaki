@@ -6,8 +6,7 @@ import {
   IconButton,
   Stack,
   TextField,
-  Typography,
-  Zoom,
+  Typography
 } from "@mui/material";
 import base64 from "base64-js";
 import { useState } from "react";

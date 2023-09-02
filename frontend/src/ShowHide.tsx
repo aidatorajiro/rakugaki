@@ -1,5 +1,5 @@
-import { Box, Zoom } from "@mui/material";
-import { ReactElement, ReactNode } from "react";
+import { Zoom } from "@mui/material";
+import { ReactElement } from "react";
 
 export default function ShowHide (props: {children: ReactElement, in: boolean}) {
     if (props.in) {
