@@ -2,6 +2,8 @@ import detectEthereumProvider from "@metamask/detect-provider";
 import { Buffer } from "buffer";
 import { BrowserProvider, keccak256 } from "ethers";
 import { RakugakiLayers__factory, RakugakiNFT__factory } from "./contracts";
+import { Component } from "react";
+import { Box, Zoom } from "@mui/material";
 
 export async function getProvider(): Promise<
   [[string], BrowserProvider] | null

@@ -18,6 +18,7 @@ import {
 } from "./utils";
 import NavigateNext from "@mui/icons-material/NavigateNext";
 import NavigateBefore from "@mui/icons-material/NavigateBefore";
+import ShowHide from "./ShowHide";
 
 function DataUpload() {
   async function handleUploadButton(e: React.ChangeEvent<HTMLInputElement>) {
@@ -124,10 +125,10 @@ function DataUpload() {
           <NavigateNext />
         </IconButton>
       </Stack>
-      <Zoom in={Boolean(imageData.timestamp.toString() !== "0")}>
+      <ShowHide in={Boolean(imageData.timestamp.toString() !== "0")}>
           <img alt="uploaded file" src={imageData.image} />
-      </Zoom>
-      <Zoom in={Boolean(imageData.timestamp.toString() === "0")}>
+      </ShowHide>
+      <ShowHide in={Boolean(imageData.timestamp.toString() === "0")}>
         <Button
           sx={{ p: 1 }}
           component="label"
@@ -142,15 +143,15 @@ function DataUpload() {
             onChange={handleUploadButton}
           />
         </Button>
-      </Zoom>
-      <Zoom in={Boolean(errorMessage)}>
+      </ShowHide>
+      <ShowHide in={Boolean(errorMessage)}>
         <Alert severity="error">
           {errorMessage}
           <Button onClick={() => setErrorMessage("")} color="primary">
             CLOSE
           </Button>
         </Alert>
-      </Zoom>
+      </ShowHide>
     </Stack>
   );
 }

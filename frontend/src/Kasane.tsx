@@ -21,6 +21,7 @@ import {
   rakugakiLayersAddress,
 } from "./utils";
 import * as ethers from "ethers";
+import ShowHide from "./ShowHide";
 
 function Kasane() {
   const [tokenID, setTokenID] = useState("0");
@@ -131,10 +132,10 @@ function Kasane() {
           <NavigateNext />
         </IconButton>
       </Stack>
-      <Zoom in={Boolean(svgData)}>
+      <ShowHide in={Boolean(svgData)}>
         <img alt={svgData !== "genfail.png" ? 'full on-chain NFT svg data' : 'failed to generate SVG data !'} src={svgData} />
-      </Zoom>
-      <Zoom in={!Boolean(svgData)}>
+      </ShowHide>
+      <ShowHide in={!Boolean(svgData)}>
       <Stack direction="column" spacing={2} sx={{ p: 0 }}>
       <TextField
         color="secondary"
@@ -207,15 +208,15 @@ function Kasane() {
         Kasaneru
       </Button>
       </Stack>
-      </Zoom>
-      <Zoom in={Boolean(errorMessage)}>
+      </ShowHide>
+      <ShowHide in={Boolean(errorMessage)}>
         <Alert severity="error">
           {errorMessage}
           <Button onClick={() => setErrorMessage("")} color="primary">
             CLOSE
           </Button>
         </Alert>
-      </Zoom>
+      </ShowHide>
     </Stack>
   );
 }
