@@ -40,7 +40,7 @@ contract SVGGeneratorDisp2 is ISVGGenerator {
 '            <feFuncB type="gamma" amplitude="1" exponent="2" offset="0"></feFuncB>',
 '        </feComponentTransfer>',
 '    </filter>',
-'    <text x="0" y="8" font-family="Verdana" font-size="12" transform="scale(6 50)" style="filter:url(#image);fill:#F89723;" >', meta.base_serial,'</text>',
+'    <text x="0" y="8" font-family="Times New Roman, serif" font-size="12" transform="scale(6 50)" style="filter:url(#image);fill:#F89723;" >', meta.base_serial,'</text>',
 '</svg>'
 ));
     }
