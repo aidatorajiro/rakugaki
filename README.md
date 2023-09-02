@@ -1,3 +1,5 @@
+Live on <https://rakugaki.aidatorajiro.dev/>! ( Please log in as Goerli network )
+
 # コンセプト（日本語）
 
 ![落書きNFTの一例。様々な国の紙幣に落書きをしたデジタルアートが、NFTとしてイーサリアムのGoerliネットワークにアップロードされている。](./gensvg.svg)
