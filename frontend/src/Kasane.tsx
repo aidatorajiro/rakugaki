@@ -10,6 +10,7 @@ import {
   Select,
   Stack,
   TextField,
+  Typography,
   Zoom,
 } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -56,8 +57,8 @@ function Kasane() {
     try {
     const acpr = await getProvider();
     if (acpr) {
-      const [accounts, web3] = acpr;
-      const rakugakiNFT = await getRakugakiNFT(web3);
+      const prov = acpr[1];
+      const rakugakiNFT = await getRakugakiNFT(prov);
       const p = (x: string) =>
         (JSON.parse(x) as [string | number])
           .map(String)
@@ -81,8 +82,8 @@ function Kasane() {
     try {
         const acpr = await getProvider();
         if (acpr) {
-          const web3 = acpr[1];
-          const rakugakiNFT = await getRakugakiNFT(web3);
+          const prov = acpr[1];
+          const rakugakiNFT = await getRakugakiNFT(prov);
           const d = await rakugakiNFT
             .tokenURI(calculateUint256ID(tokenID));
           setSVGData(JSON.parse(d).image);
@@ -100,10 +101,13 @@ function Kasane() {
 
   useEffect(() => {
     downloadSVGData();
-  }, [tokenID]);
+  }, [tokenID]);[tokenID]
 
   return (
     <Stack direction="column" spacing={2} sx={{ p: 2 }}>
+      <Typography variant="h4">
+        Make Layers
+      </Typography>
       <TextField
         color="secondary"
         label="Token ID"
@@ -115,18 +119,23 @@ function Kasane() {
         <IconButton
           onClick={decreaseCount}
           color="primary"
-          aria-label="add to shopping cart"
+          aria-label="decrease count"
         >
           <NavigateBefore />
         </IconButton>
         <IconButton
           onClick={increaseCount}
           color="primary"
-          aria-label="add to shopping cart"
+          aria-label="increase count"
         >
           <NavigateNext />
         </IconButton>
       </Stack>
+      <Zoom in={Boolean(svgData)}>
+        <img alt={svgData !== "genfail.png" ? 'full on-chain NFT svg data' : 'failed to generate SVG data !'} src={svgData} />
+      </Zoom>
+      <Zoom in={!Boolean(svgData)}>
+      <Stack direction="column" spacing={2} sx={{ p: 0 }}>
       <TextField
         color="secondary"
         label="Other Data"
@@ -188,7 +197,6 @@ function Kasane() {
           )}
         </Select>
       </FormControl>
-      <Zoom in={!Boolean(svgData)}>
       <Button
         sx={{ p: 1 }}
         component="label"
@@ -198,9 +206,7 @@ function Kasane() {
       >
         Kasaneru
       </Button>
-      </Zoom>
-      <Zoom in={Boolean(svgData)}>
-        <img alt={svgData !== "genfail.png" ? 'full on-chain NFT svg data' : 'failed to generate SVG data !'} src={svgData} />
+      </Stack>
       </Zoom>
       <Zoom in={Boolean(errorMessage)}>
         <Alert severity="error">
