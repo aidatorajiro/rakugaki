@@ -80,11 +80,11 @@
 	},
 	"sources": {
 		"SVGGenerator2.sol": {
-			"keccak256": "0x237b0c59bde1409197b8ae7ca97fe609e9091b7340d361fda5bfaf906ccda6d5",
+			"keccak256": "0x9efa6d2c2e9d701fbd01c3cf46fc163c4c58489399265a1a98e05dbb792f046b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://32e48a57641e7307ae2782666f3aab8d344eaec849a02b9ff21ba11452e74bc8",
-				"dweb:/ipfs/QmfV6DaqyqYssUnio7cEi7SiwsaJjGr3NWUqV1gciARdEw"
+				"bzz-raw://e0fe11346eb36a3a7d719725e2691e8a8bc0f302a2e00a8dd354340ab2a590b0",
+				"dweb:/ipfs/QmShQ1mpXAcsVhRtjLuZNQnt9y3RiXpdjcw4YdjPCNAGjN"
 			]
 		},
 		"defs.sol": {
