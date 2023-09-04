@@ -21,6 +21,7 @@ import {
 } from "./utils";
 import * as ethers from "ethers";
 import ShowHide from "./ShowHide";
+import YamiMap from "./YamiMap";
 
 function Kasane() {
   const [tokenID, setTokenID] = useState("0");
@@ -62,6 +63,7 @@ function Kasane() {
       const p = (x: string) =>
         (JSON.parse(x) as [string | number])
           .map(String)
+          .map(YamiMap)
           .map(calculateUint256ID);
       await (await rakugakiNFT.mint(
         tokenID,

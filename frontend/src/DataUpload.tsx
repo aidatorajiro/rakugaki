@@ -18,6 +18,7 @@ import {
 import NavigateNext from "@mui/icons-material/NavigateNext";
 import NavigateBefore from "@mui/icons-material/NavigateBefore";
 import ShowHide from "./ShowHide";
+import YamiMap from "./YamiMap";
 
 function DataUpload() {
   async function handleUploadButton(e: React.ChangeEvent<HTMLInputElement>) {
@@ -57,6 +58,11 @@ function DataUpload() {
   }
 
   const [imageID, setImageID] = useState("0");
+
+  if (YamiMap(imageID) !== imageID) {
+    setImageID(YamiMap(imageID))
+  }
+
   const [imageData, setImageData] = useState<{
     image: string;
     timestamp: BigInt;
