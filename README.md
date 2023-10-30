@@ -1,4 +1,4 @@
-Live on <https://rakugaki.aidatorajiro.dev/>! ( Please log in as Goerli network )
+Live on <https://rakugaki.aidatorajiro.dev/>! ( Requires Metamask to access the site; Please log in as Goerli network )
 
 # コンセプト（日本語）
 
