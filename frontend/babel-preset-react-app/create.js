@@ -106,7 +106,7 @@ module.exports = function (api, opts, env) {
       // order as-if the browser supported all of the succeeding features
       // https://github.com/facebook/create-react-app/pull/5182
       // We will conditionally enable this plugin below in overrides as it clashes with
-      // @babel/plugin-proposal-decorators when using TypeScript.
+      // @babel/plugin-transform-decorators when using TypeScript.
       // https://github.com/facebook/create-react-app/issues/5741
       isFlowEnabled && [
         require('@babel/plugin-transform-flow-strip-types').default,
@@ -148,30 +148,30 @@ module.exports = function (api, opts, env) {
       // See discussion in https://github.com/facebook/create-react-app/issues/4263
       // Note:
       // 'loose' mode configuration must be the same for
-      // * @babel/plugin-proposal-class-properties
-      // * @babel/plugin-proposal-private-methods
-      // * @babel/plugin-proposal-private-property-in-object
+      // * @babel/plugin-transform-class-properties
+      // * @babel/plugin-transform-private-methods
+      // * @babel/plugin-transform-private-property-in-object
       // (when they are enabled)
       [
-        require('@babel/plugin-proposal-class-properties').default,
+        require('@babel/plugin-transform-class-properties').default,
         {
           loose: true,
         },
       ],
       [
-        require('@babel/plugin-proposal-private-methods').default,
+        require('@babel/plugin-transform-private-methods').default,
         {
           loose: true,
         },
       ],
       [
-        require('@babel/plugin-proposal-private-property-in-object').default,
+        require('@babel/plugin-transform-private-property-in-object').default,
         {
           loose: true,
         },
       ],
       // Adds Numeric Separators
-      require('@babel/plugin-proposal-numeric-separator').default,
+      require('@babel/plugin-transform-numeric-separator').default,
       // Polyfills the runtime needed for async/await, generators, and friends
       // https://babeljs.io/docs/en/babel-plugin-transform-runtime
       [
@@ -205,8 +205,8 @@ module.exports = function (api, opts, env) {
       // but not yet supported in webpack due to support missing from acorn.
       // These can be removed once webpack has support.
       // See https://github.com/facebook/create-react-app/issues/8445#issuecomment-588512250
-      require('@babel/plugin-proposal-optional-chaining').default,
-      require('@babel/plugin-proposal-nullish-coalescing-operator').default,
+      require('@babel/plugin-transform-optional-chaining').default,
+      require('@babel/plugin-transform-nullish-coalescing-operator').default,
     ].filter(Boolean),
     overrides: [
       isFlowEnabled && {
