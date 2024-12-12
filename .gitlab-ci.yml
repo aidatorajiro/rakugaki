@@ -9,9 +9,9 @@ cache:
 
 pages:
   script:
-    - cd frontend/babel-preset-react-app && yarn
-    - cd frontend/eslint-config-react-app && yarn
-    - cd frontend/react-app-polyfill && yarn
+    - cd frontend/babel-preset-react-app && yarn && cd ../../
+    - cd frontend/eslint-config-react-app && yarn && cd ../../
+    - cd frontend/react-app-polyfill && yarn && cd ../../
     - cd frontend/ && yarn && yarn build
   artifacts:
     paths:
