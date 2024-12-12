@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import "./App.css";
 import {
   Alert,
@@ -84,7 +84,7 @@ function DataUpload() {
     }
   }
 
-  async function downloadImageData() {
+  const downloadImageData = useCallback(async function () {
     try {
       const acpr = await getProvider();
       if (acpr) {
@@ -97,11 +97,11 @@ function DataUpload() {
     } catch (e) {
       setErrorMessage(String(e));
     }
-  }
+  }, [imageID])
 
   useEffect(() => {
     downloadImageData();
-  }, [imageID]);
+  }, [imageID, downloadImageData]);
 
   return (
     <Stack direction="column" spacing={2} sx={{ p: 2 }}>

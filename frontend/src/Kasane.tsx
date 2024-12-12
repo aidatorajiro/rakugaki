@@ -12,7 +12,7 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   calculateUint256ID,
   getRakugakiNFT,
@@ -80,7 +80,7 @@ function Kasane() {
     }
   }
 
-  async function downloadSVGData() {
+  const downloadSVGData = useCallback(async function () {
     try {
         const acpr = await getProvider();
         if (acpr) {
@@ -99,11 +99,11 @@ function Kasane() {
           }
         }
     }
-  }
+  }, [tokenID]);
 
   useEffect(() => {
     downloadSVGData();
-  }, [tokenID]);
+  }, [tokenID, downloadSVGData]);
 
   return (
     <Stack direction="column" spacing={2} sx={{ p: 2 }}>
