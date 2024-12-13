@@ -29,9 +29,9 @@ function Kasane() {
   const [tokenID, setTokenID] = useState("0");
   const [otherData, setOtherData] = useState("[]");
   const [layers, setLayers] = useState("[]");
-  const [serial, setSerial] = useState("RAKUGAKI-");
+  const [serial, setSerial] = useState("R-");
   const [generator, setGenerator] = useState(
-    "0x06ae046986A584514E343fe6E3494D15E713E37a",
+    "",
   );
   const [svgData, setSVGData] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -51,10 +51,7 @@ function Kasane() {
     return latestConfig?.generators.map((x) => {
         return (
       <MenuItem value={x.address}>
-      {x.name} |
-      {x.description} |
-      {x.layerRange[0]} -
-      {x.layerRange[1]}
+      {x.name} | {x.description} | レイヤー数：{x.layerRange[0]}枚から{x.layerRange[1]}枚まで
       </MenuItem>
         )
     })
@@ -78,8 +75,8 @@ function Kasane() {
     if (acpr) {
       const prov = acpr[1];
       const layer_addr = await getLayerDatabaseAddress(prov);
+      if (!layer_addr) { return; }
       const rakugakiNFT = await getRakugakiNFT(prov);
-      if (!rakugakiNFT || !layer_addr) { return; }
       const p = (x: string) =>
         (JSON.parse(x) as [string | number])
           .map(String)
@@ -106,7 +103,6 @@ function Kasane() {
         if (acpr) {
           const prov = acpr[1];
           const rakugakiNFT = await getRakugakiNFT(prov);
-          if (!rakugakiNFT) { return; }
           const d = await rakugakiNFT
             .tokenURI(calculateUint256ID(tokenID));
           setSVGData(JSON.parse(d).image);

@@ -54,7 +54,7 @@ export function getFactory (compileKey: CompileKey) {
 
 export async function getRakugakiLayers(provider: BrowserProvider) {
   const conf = await getRakugakiConfig(provider);
-  if (!conf) { return }
+  if (!conf) { throw Error("invalid network config") }
   return getFactory(conf.compileKey).RakugakiLayers__factory.connect(
     conf.layerDatabase,
     await provider.getSigner(),
@@ -63,7 +63,7 @@ export async function getRakugakiLayers(provider: BrowserProvider) {
 
 export async function getRakugakiNFT(provider: BrowserProvider) {
   const conf = await getRakugakiConfig(provider);
-  if (!conf) { return }
+  if (!conf) { throw Error("invalid network config") }
   return getFactory(conf.compileKey).RakugakiNFT__factory.connect(
     conf.nft,
     await provider.getSigner(),

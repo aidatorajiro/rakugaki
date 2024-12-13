@@ -41,7 +41,6 @@ function DataUpload() {
         if (acpr) {
           const prov = acpr[1];
           const rakugakiLayers = await getRakugakiLayers(prov);
-          if (!rakugakiLayers) { return ; }
           await (await rakugakiLayers.addImage(
             calculateUint256ID(imageID),
             compressed,
@@ -87,7 +86,6 @@ function DataUpload() {
       if (acpr) {
         const prov = acpr[1];
         const rakugakiLayers = await getRakugakiLayers(prov);
-        if (!rakugakiLayers) { return ; }
         const d = await rakugakiLayers
           .getLayer(calculateUint256ID(imageID));
         setImageData(d);
