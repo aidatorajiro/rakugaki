@@ -67,7 +67,7 @@
 		"compilationTarget": {
 			"SVGGenerator3.sol": "FutunoKasane"
 		},
-		"evmVersion": "cancun",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

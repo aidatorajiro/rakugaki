@@ -67,7 +67,7 @@
 		"compilationTarget": {
 			"SVGGenerator1.sol": "DispKasane"
 		},
-		"evmVersion": "cancun",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

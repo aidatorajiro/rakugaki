@@ -70,7 +70,7 @@
 		"compilationTarget": {
 			"RakugakiLayers.sol": "RakugakiLayers"
 		},
-		"evmVersion": "cancun",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

@@ -617,7 +617,7 @@
 		"compilationTarget": {
 			"RakugakiNFT.sol": "RakugakiNFT"
 		},
-		"evmVersion": "cancun",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
