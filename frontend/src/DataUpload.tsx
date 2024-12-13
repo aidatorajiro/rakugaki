@@ -27,11 +27,7 @@ function DataUpload() {
         let buf = await e.target.files[0].arrayBuffer();
         let b64str = base64.fromByteArray(new Uint8Array(buf));
         let url;
-        if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-          url = "http://localhost:3001/compress/"
-        } else {
           url = "https://rakugaki.aidatorajiro.dev/compress/compress/"
-        }
         let res = await fetch(url, {
           method: "POST",
           headers: {

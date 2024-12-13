@@ -24,6 +24,7 @@ import {
 import * as ethers from "ethers";
 import ShowHide from "./ShowHide";
 import YamiMap from "./YamiMap";
+import {NetworkConfig} from "./Addresses";
 
 function Kasane() {
   const [tokenID, setTokenID] = useState("0");
@@ -35,13 +36,29 @@ function Kasane() {
   );
   const [svgData, setSVGData] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [latestConfig, setLatestConfig] = useState<NetworkConfig>()
 
-  function addressChoice(address: string, comment: string) {
-    return (
-      <MenuItem value={address}>
-        {comment}
+  useEffect(() => {
+    (async () => {
+    const acpr = await getProvider();
+    if (!acpr) {return}
+    const prov = acpr[1];
+    const config = await getRakugakiConfig(prov);
+    setLatestConfig(config)
+    })();
+  }, [])
+
+  function addressChoice() {
+    return latestConfig?.generators.map((x) => {
+        return (
+      <MenuItem value={x.address}>
+      {x.name} |
+      {x.description} |
+      {x.layerRange[0]} -
+      {x.layerRange[1]}
       </MenuItem>
-    );
+        )
+    })
   }
 
   function increaseCount() {
@@ -176,36 +193,8 @@ function Kasane() {
           label="SVG Generator"
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          defaultValue={"0x06ae046986A584514E343fe6E3494D15E713E37a"}
         >
-          {addressChoice(
-            "0x06ae046986A584514E343fe6E3494D15E713E37a",
-            "disp - レイヤー2枚",
-          )}
-          {addressChoice(
-            "0x1DDD1318d7EeB90C2B9B16a688DCd108781BFFB3",
-            "serialkasane ver.1 - レイヤー5枚のみ",
-          )}
-          {addressChoice(
-            "0x3e153313A12c528E988b544Ea39f2c0D51E5399F",
-            "serialkasane ver.2 - レイヤー5枚のみ",
-          )}
-          {addressChoice(
-            "0x8c93fD1537529cEd54F8c0D43dC644883Fc55E4b",
-            "serialkasane ver.3 - レイヤー5枚のみ",
-          )}
-          {addressChoice(
-            "0x2b4C1B113cC63aAc3772c1214C696645315a2512",
-            "serialkasane ver.4 - レイヤー1枚から5枚",
-          )}
-          {addressChoice(
-            "0xEB9a3727794bBf96e95727D59a3a09937684c72E",
-            "普通の重ね ver.1 - レイヤー枚数4以上",
-          )}
-          {addressChoice(
-            "0xd3884bcbd37a280ffd7fa344bb72150f6dc85362",
-            "普通の重ね ver.2 - レイヤー枚数任意",
-          )}
+          {addressChoice()}
         </Select>
       </FormControl>
       <Button
