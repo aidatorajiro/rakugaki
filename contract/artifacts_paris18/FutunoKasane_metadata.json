@@ -1,0 +1,124 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256[]",
+								"name": "other_data",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "uint256[]",
+								"name": "layers",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "string",
+								"name": "base_serial",
+								"type": "string"
+							},
+							{
+								"internalType": "contract IRakugakiLayers",
+								"name": "layers_database",
+								"type": "address"
+							},
+							{
+								"internalType": "contract ISVGGenerator",
+								"name": "generator",
+								"type": "address"
+							}
+						],
+						"internalType": "struct NFTMeta",
+						"name": "meta",
+						"type": "tuple"
+					}
+				],
+				"name": "generate",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"SVGGenerator3.sol": "FutunoKasane"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/Strings.sol": {
+			"keccak256": "0x3088eb2868e8d13d89d16670b5f8612c4ab9ff8956272837d8e90106c59c14a0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b81d9ff6559ea5c47fc573e17ece6d9ba5d6839e213e6ebc3b4c5c8fe4199d7f",
+				"dweb:/ipfs/QmPCW1bFisUzJkyjroY3yipwfism9RRCigCcK1hbXtVM8n"
+			]
+		},
+		"@openzeppelin/contracts/utils/math/Math.sol": {
+			"keccak256": "0xe4455ac1eb7fc497bb7402579e7b4d64d928b846fce7d2b6fde06d366f21c2b3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cc8841b3cd48ad125e2f46323c8bad3aa0e88e399ec62acb9e57efa7e7c8058c",
+				"dweb:/ipfs/QmSqE4mXHA2BXW58deDbXE8MTcsL5JSKNDbm23sVQxRLPS"
+			]
+		},
+		"@openzeppelin/contracts/utils/math/SignedMath.sol": {
+			"keccak256": "0xf92515413956f529d95977adc9b0567d583c6203fc31ab1c23824c35187e3ddc",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c50fcc459e49a9858b6d8ad5f911295cb7c9ab57567845a250bf0153f84a95c7",
+				"dweb:/ipfs/QmcEW85JRzvDkQggxiBBLVAasXWdkhEysqypj9EaB6H2g6"
+			]
+		},
+		"SVGGenerator3.sol": {
+			"keccak256": "0xacd81bf0aab50af84b7e2d880efc9a2ac1ae9ab51690168851105f86f26f61a1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d2d8afc110a4ae1f298c422784b218bb78c103f457a7c04afa5b9102d6c2aec7",
+				"dweb:/ipfs/QmbL8q563oDDJoPSsZPGGVJj1BwABQyXbkssG3qU8DwGqv"
+			]
+		},
+		"defs.sol": {
+			"keccak256": "0xd12f5fb663a9c9c7da84b1379de07913cff4e70447e3807da54ee8bde16a2b44",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5bc00d53a1ff12a72f14be84c0e85f5d07547af417ee0ee2c0e3e2f022729fcb",
+				"dweb:/ipfs/QmSJmfhWmisQk8fAR3pZBNLoz9LBnRwXgmctEK9FiEww3M"
+			]
+		}
+	},
+	"version": 1
+}

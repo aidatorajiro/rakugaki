@@ -1,0 +1,92 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256[]",
+								"name": "other_data",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "uint256[]",
+								"name": "layers",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "string",
+								"name": "base_serial",
+								"type": "string"
+							},
+							{
+								"internalType": "contract IRakugakiLayers",
+								"name": "layers_database",
+								"type": "address"
+							},
+							{
+								"internalType": "contract ISVGGenerator",
+								"name": "generator",
+								"type": "address"
+							}
+						],
+						"internalType": "struct NFTMeta",
+						"name": "meta",
+						"type": "tuple"
+					}
+				],
+				"name": "generate",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"defs.sol": "ISVGGenerator"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"defs.sol": {
+			"keccak256": "0xd12f5fb663a9c9c7da84b1379de07913cff4e70447e3807da54ee8bde16a2b44",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5bc00d53a1ff12a72f14be84c0e85f5d07547af417ee0ee2c0e3e2f022729fcb",
+				"dweb:/ipfs/QmSJmfhWmisQk8fAR3pZBNLoz9LBnRwXgmctEK9FiEww3M"
+			]
+		}
+	},
+	"version": 1
+}
