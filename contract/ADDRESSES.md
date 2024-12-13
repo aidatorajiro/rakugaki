@@ -1,0 +1,11 @@
+## Goerli Testnet
+
+RakugakiLayers 0x5bB5a69A8b0e80C45B5C0C003A8253623c0B5D46
+
+RakugakiNFT 0xeb9779c9b66e16a95e16d28f6ed8241ba09ddd18
+
+## Sepolia Testnet
+
+RakugakiLayers 0x3228db02e3943dCCb18dc630EB7034335e2B62Eb
+
+RakugakiNFT 0x991C2623d55c392785b5016422169fddaE253148

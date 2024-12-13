@@ -7,8 +7,6 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "RakugakiLayers.sol";
 import "defs.sol";
 
-// RakugakiNFT 0xeb9779c9b66e16a95e16d28f6ed8241ba09ddd18
-
 contract RakugakiNFT is ERC721 {
 
     constructor() ERC721("Rakugaki", "RGK") { }
