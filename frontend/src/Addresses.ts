@@ -6,8 +6,10 @@ export type GeneratorConfig = {
     address: string
 }
 
+export type CompileKey = "paris26" | "cancun26" | "paris18"
+
 export type NetworkConfig = {
-    compileKey: "paris26" | "cancun26" | "paris18",
+    compileKey: CompileKey,
     generators: GeneratorConfig[],
     layerDatabase: string,
     nft: string

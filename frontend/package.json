@@ -7,7 +7,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "npx prettier --write 'src/**/*.{ts, tsx}' && eslint --fix --ext .ts src && eslint --fix --ext .tsx src",
-    "typechain": "echo paris26 paris18 cancun26 | xargs -I{} typechain --target=ethers-v6 --out-dir src/contracts/{} ../contract/artifacts_{}/RakugakiNFT.json ../contract/artifacts_{}/RakugakiLayers.json"
+    "typechain": "bash -c \"function myfunc () { typechain --target=ethers-v6 --out-dir src/contracts/\\$1 ../contract/artifacts_\\$1/RakugakiNFT.json ../contract/artifacts_\\$1/RakugakiLayers.json; }; myfunc paris26; myfunc paris18; myfunc cancun26; \""
   },
   "eslintConfig": {
     "extends": [
