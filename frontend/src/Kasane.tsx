@@ -1,7 +1,7 @@
 import NavigateBefore from "@mui/icons-material/NavigateBefore";
 import NavigateNext from "@mui/icons-material/NavigateNext";
 import {
-    Alert,
+  Alert,
   Button,
   FormControl,
   IconButton,
@@ -17,7 +17,9 @@ import {
   calculateUint256ID,
   getRakugakiNFT,
   getProvider,
-  rakugakiLayersAddress,
+  getLayerDatabaseAddress,
+  getNFTAddress,
+  getRakugakiConfig
 } from "./utils";
 import * as ethers from "ethers";
 import ShowHide from "./ShowHide";
@@ -27,7 +29,7 @@ function Kasane() {
   const [tokenID, setTokenID] = useState("0");
   const [otherData, setOtherData] = useState("[]");
   const [layers, setLayers] = useState("[]");
-  const [serial, setSerial] = useState("CCBT-");
+  const [serial, setSerial] = useState("RAKUGAKI-");
   const [generator, setGenerator] = useState(
     "0x06ae046986A584514E343fe6E3494D15E713E37a",
   );
@@ -59,7 +61,9 @@ function Kasane() {
     const acpr = await getProvider();
     if (acpr) {
       const prov = acpr[1];
+      const layer_addr = await getLayerDatabaseAddress(prov);
       const rakugakiNFT = await getRakugakiNFT(prov);
+      if (!rakugakiNFT || !layer_addr) { return; }
       const p = (x: string) =>
         (JSON.parse(x) as [string | number])
           .map(String)
@@ -70,7 +74,7 @@ function Kasane() {
         JSON.parse(otherData),
         p(layers),
         serial,
-        rakugakiLayersAddress,
+        layer_addr,
         generator,
       )).wait();
       downloadSVGData();
@@ -86,6 +90,7 @@ function Kasane() {
         if (acpr) {
           const prov = acpr[1];
           const rakugakiNFT = await getRakugakiNFT(prov);
+          if (!rakugakiNFT) { return; }
           const d = await rakugakiNFT
             .tokenURI(calculateUint256ID(tokenID));
           setSVGData(JSON.parse(d).image);

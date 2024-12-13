@@ -1,7 +1,9 @@
 import detectEthereumProvider from "@metamask/detect-provider";
 import { Buffer } from "buffer";
 import { BrowserProvider, keccak256 } from "ethers";
-import { RakugakiLayers__factory, RakugakiNFT__factory } from "./contracts";
+import * as paris from "./contracts/paris";
+
+import { ADDRESSES, NetworkConfig } from "./Addresses";
 
 export async function getProvider(): Promise<
   [[string], BrowserProvider] | null
@@ -21,21 +23,39 @@ export async function getProvider(): Promise<
   }
 }
 
-export const rakugakiLayersAddress =
-  "0x5bB5a69A8b0e80C45B5C0C003A8253623c0B5D46";
+export async function getChainId(provider: BrowserProvider) {
+    return parseInt((await provider.getNetwork()).chainId.toString(10));
+}
+
+export async function getRakugakiConfig(provider: BrowserProvider): Promise<NetworkConfig | undefined> {
+    const chainId = await getChainId(provider)
+    return ADDRESSES[chainId]
+}
+
+export async function getLayerDatabaseAddress(provider: BrowserProvider) {
+    const c = await getRakugakiConfig(provider)
+    if (c !== undefined) { return c.layerDatabase }
+}
+
+export async function getNFTAddress(provider: BrowserProvider) {
+    const c = await getRakugakiConfig(provider)
+    if (c !== undefined) { return c.nft }
+}
 
 export async function getRakugakiLayers(provider: BrowserProvider) {
-  return RakugakiLayers__factory.connect(
-    rakugakiLayersAddress,
+  const addr = await getLayerDatabaseAddress(provider);
+  if (!addr) { return }
+  return paris.factories.RakugakiLayers__factory.connect(
+    addr,
     await provider.getSigner(),
   );
 }
 
-export const rakugakiNFTAddress = "0xeb9779c9b66e16a95e16d28f6ed8241ba09ddd18";
-
 export async function getRakugakiNFT(provider: BrowserProvider) {
-  return RakugakiNFT__factory.connect(
-    rakugakiNFTAddress,
+  const addr = await getNFTAddress(provider)
+  if (!addr) { return }
+  return paris.factories.RakugakiNFT__factory.connect(
+    addr,
     await provider.getSigner(),
   );
 }
