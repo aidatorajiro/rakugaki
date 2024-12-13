@@ -18,7 +18,6 @@ import {
   getRakugakiNFT,
   getProvider,
   getLayerDatabaseAddress,
-  getNFTAddress,
   getRakugakiConfig
 } from "./utils";
 import * as ethers from "ethers";

@@ -2,7 +2,6 @@ import "./App.css";
 import { Grid, ThemeProvider, createTheme } from "@mui/material";
 import DataUpload from "./DataUpload";
 import Kasane from "./Kasane";
-import {useState} from "react";
 
 const theme = createTheme({
   palette: {
@@ -16,7 +15,6 @@ const theme = createTheme({
 });
 
 function App() {
-  const [chainID, setChainID] = useState(0xe708)
   return (
     <ThemeProvider theme={theme}>
       <Grid container>
