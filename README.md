@@ -24,14 +24,48 @@ https://gitlab.aidatorajiro.dev/aidatorajiro/rakugaki
 
 https://github.com/aidatorajiro/rakugaki
 
-
 ## Opensea
 
-https://testnets.opensea.io/0xae97EDa493939137B20aD1E45Dd14cD82B2f3826
+Arbitrium One: <https://opensea.io/collection/rakugaki-7>
 
-https://testnets.opensea.io/collection/rakugaki-3
+the main net deployment is also available on Linea but opensea still haven's supported Linea...
 
 ## Contract Info
 
-Latest Version of NFT Contract: 0xEb9779c9b66e16a95e16D28F6ed8241bA09ddd18
-@ Goerli Network
+### Goerli Testnet (discontinued)
+
+- RakugakiLayers 0x5bB5a69A8b0e80C45B5C0C003A8253623c0B5D46
+- RakugakiNFT 0xeb9779c9b66e16a95e16d28f6ed8241ba09ddd18
+- SVG Generator 1 0x06ae046986A584514E343fe6E3494D15E713E37a
+- SVG Generator 2  
+  v1 0x1DDD1318d7EeB90C2B9B16a688DCd108781BFFB3  
+  v2 0x3e153313A12c528E988b544Ea39f2c0D51E5399F  
+  v3 0x8c93fD1537529cEd54F8c0D43dC644883Fc55E4b
+- SVG Generator 3 0x06ae046986A584514E343fe6E3494D15E713E37a
+
+### Sepolia Testnet (WIP)
+
+- RakugakiLayers 0x3228db02e3943dCCb18dc630EB7034335e2B62Eb
+- RakugakiNFT 0x991C2623d55c392785b5016422169fddaE253148
+
+### Linea Sepolia Testnet (WIP)
+
+- none yet
+
+### main - Arbitrium One
+
+- RakugakiLayers 0x2FF13e8FD83D455a3064BC43992982a65ae0F3c2
+- RakugakiNFT 0x3228db02e3943dCCb18dc630EB7034335e2B62Eb
+- SVG Generator 1 0x991C2623d55c392785b5016422169fddaE253148
+- SVG Generator 2 0xc17E11D26d5052F574b2B9f2c4984824D616E80D
+- SVG Generator 3 0x8d9e8C1B3e3C70555923c01b0ab1cA77830047a0
+- SVG Generator 4 0x225DDb286Da538B78ae34B5372660a1313F75eE2
+
+### main - Linea
+
+- RakugakiLayers 0x3228db02e3943dCCb18dc630EB7034335e2B62Eb
+- RakugakiNFT 0x991C2623d55c392785b5016422169fddaE253148
+- SVG Generator 1 0xc17E11D26d5052F574b2B9f2c4984824D616E80D
+- SVG Generator 2 0x8d9e8C1B3e3C70555923c01b0ab1cA77830047a0
+- SVG Generator 3 0x225DDb286Da538B78ae34B5372660a1313F75eE2
+- SVG Generator 4 0x03Cc0fFA70dE35970d80fB192a9DfFD4571f2303
