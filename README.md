@@ -1,4 +1,4 @@
-Live on <https://rakugaki.aidatorajiro.dev/>! ( Requires Metamask to access the site; Please log in as Goerli network )
+Live on <https://rakugaki.aidatorajiro.dev/>! ( Requires Metamask to access the site; Please log in as Linea / Arbitrium network )
 
 # コンセプト（日本語）
 
@@ -28,7 +28,7 @@ https://github.com/aidatorajiro/rakugaki
 
 Arbitrium One: <https://opensea.io/collection/rakugaki-7>
 
-the main net deployment is also available on Linea but opensea still haven's supported Linea...
+the main net deployment is also available on Linea but opensea still haven't supported Linea...
 
 ## Contract Info
 
