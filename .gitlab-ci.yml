@@ -20,7 +20,7 @@ pages:
   publish: frontend/build
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    - changes:
+      changes:
       - frontend/**/*
   environment: production
 
