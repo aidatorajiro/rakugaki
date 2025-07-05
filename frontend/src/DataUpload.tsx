@@ -27,7 +27,7 @@ function DataUpload() {
         let buf = await e.target.files[0].arrayBuffer();
         let b64str = base64.fromByteArray(new Uint8Array(buf));
         let url;
-          url = "https://rakugaki.aidatorajiro.dev/compress/compress/"
+          url = "https://rakugaki.torahappy.org/compress/compress/"
         let res = await fetch(url, {
           method: "POST",
           headers: {

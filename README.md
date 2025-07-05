@@ -1,4 +1,4 @@
-Live on <https://rakugaki.aidatorajiro.dev/>! ( Requires Metamask to access the site; Please log in as Linea / Arbitrium network )
+Live on <https://rakugaki.torahappy.org/>! ( Requires Metamask to access the site; Please log in as Linea / Arbitrium network )
 
 # コンセプト（日本語）
 
@@ -20,7 +20,7 @@ Due to the technical limitations of full-on chain NFT, only low-resolution image
 
 ## Git repo
 
-https://gitlab.aidatorajiro.dev/aidatorajiro/rakugaki
+https://gitlab.torahappy.org/aidatorajiro/rakugaki
 
 https://github.com/aidatorajiro/rakugaki
 
