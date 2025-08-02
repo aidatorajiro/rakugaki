@@ -117,11 +117,13 @@ function Kasane() {
             "0x0000000000000000000000000000000000000000",
           );
           setSVGData("");
-        } catch (_e) {
+        } catch (e) {
+          console.log(e);
           try {
             const d = await rakugakiNFT.tokenURI(calculateUint256ID(tokenID));
             setSVGData(JSON.parse(d).image);
-          } catch (_e) {
+          } catch (e) {
+            console.log(e);
             setSVGData("genfail.png");
           }
         }
