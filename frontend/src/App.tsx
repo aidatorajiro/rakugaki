@@ -18,10 +18,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Grid container>
-        <Grid item xs={12} lg={6}>
+        <Grid size={{xs: 12, lg: 6}}>
           <DataUpload />
         </Grid>
-        <Grid item xs={12} lg={6}>
+        <Grid size={{xs: 12, lg: 6}}>
           <Kasane />
         </Grid>
       </Grid>
