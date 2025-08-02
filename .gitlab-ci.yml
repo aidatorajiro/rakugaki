@@ -8,6 +8,7 @@ cache:
     - frontend/node_modules/
 
 pages:
+  stage: build
   script:
     - cd frontend/babel-preset-react-app && yarn && cd ../../
     - cd frontend/eslint-config-react-app && yarn && cd ../../
@@ -22,5 +23,6 @@ pages:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       changes:
       - frontend/**/*
+      - .gitlab-ci.yml
   environment: production
 
