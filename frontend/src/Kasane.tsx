@@ -20,7 +20,6 @@ import {
   getLayerDatabaseAddress,
   getRakugakiConfig,
 } from "./utils";
-import * as ethers from "ethers";
 import ShowHide from "./ShowHide";
 import YamiMap from "./YamiMap";
 import { NetworkConfig } from "./Addresses";
@@ -118,11 +117,11 @@ function Kasane() {
             "0x0000000000000000000000000000000000000000",
           );
           setSVGData("");
-        } catch (e) {
+        } catch (_e) {
           try {
             const d = await rakugakiNFT.tokenURI(calculateUint256ID(tokenID));
             setSVGData(JSON.parse(d).image);
-          } catch (e) {
+          } catch (_e) {
             setSVGData("genfail.png");
           }
         }
