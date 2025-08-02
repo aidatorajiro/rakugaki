@@ -10,7 +10,7 @@ import {
   Select,
   Stack,
   TextField,
-  Typography
+  Typography,
 } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import {
@@ -18,43 +18,44 @@ import {
   getRakugakiNFT,
   getProvider,
   getLayerDatabaseAddress,
-  getRakugakiConfig
+  getRakugakiConfig,
 } from "./utils";
 import * as ethers from "ethers";
 import ShowHide from "./ShowHide";
 import YamiMap from "./YamiMap";
-import {NetworkConfig} from "./Addresses";
+import { NetworkConfig } from "./Addresses";
 
 function Kasane() {
   const [tokenID, setTokenID] = useState("0");
   const [otherData, setOtherData] = useState("[]");
   const [layers, setLayers] = useState("[]");
   const [serial, setSerial] = useState("R-");
-  const [generator, setGenerator] = useState(
-    "",
-  );
+  const [generator, setGenerator] = useState("");
   const [svgData, setSVGData] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [latestConfig, setLatestConfig] = useState<NetworkConfig>()
+  const [latestConfig, setLatestConfig] = useState<NetworkConfig>();
 
   useEffect(() => {
     (async () => {
-    const acpr = await getProvider();
-    if (!acpr) {return}
-    const prov = acpr[1];
-    const config = await getRakugakiConfig(prov);
-    setLatestConfig(config)
+      const acpr = await getProvider();
+      if (!acpr) {
+        return;
+      }
+      const prov = acpr[1];
+      const config = await getRakugakiConfig(prov);
+      setLatestConfig(config);
     })();
-  }, [])
+  }, []);
 
   function addressChoice() {
     return latestConfig?.generators.map((x) => {
-        return (
-      <MenuItem value={x.address}>
-      {x.name} | {x.description} | レイヤー数：{x.layerRange[0]}枚から{x.layerRange[1]}枚まで
-      </MenuItem>
-        )
-    })
+      return (
+        <MenuItem value={x.address}>
+          {x.name} | {x.description} | レイヤー数：{x.layerRange[0]}枚から
+          {x.layerRange[1]}枚まで
+        </MenuItem>
+      );
+    });
   }
 
   function increaseCount() {
@@ -71,52 +72,64 @@ function Kasane() {
 
   async function handleKasaneButton() {
     try {
-    const acpr = await getProvider();
-    if (acpr) {
-      const prov = acpr[1];
-      const layer_addr = await getLayerDatabaseAddress(prov);
-      if (!layer_addr) { return; }
-      const rakugakiNFT = await getRakugakiNFT(prov);
-      const p = (x: string) =>
-        (JSON.parse(x) as [string | number])
-          .map(String)
-          .map(YamiMap)
-          .map(calculateUint256ID);
-      await (await rakugakiNFT.mint(
-        tokenID,
-        JSON.parse(otherData),
-        p(layers),
-        serial,
-        layer_addr,
-        generator,
-      )).wait();
-      downloadSVGData();
-    }
+      const acpr = await getProvider();
+      if (acpr) {
+        const prov = acpr[1];
+        const layer_addr = await getLayerDatabaseAddress(prov);
+        if (!layer_addr) {
+          return;
+        }
+        const rakugakiNFT = await getRakugakiNFT(prov);
+        const p = (x: string) =>
+          (JSON.parse(x) as [string | number])
+            .map(String)
+            .map(YamiMap)
+            .map(calculateUint256ID);
+        await (
+          await rakugakiNFT.mint(
+            tokenID,
+            JSON.parse(otherData),
+            p(layers),
+            serial,
+            layer_addr,
+            generator,
+          )
+        ).wait();
+        downloadSVGData();
+      }
     } catch (e) {
       setErrorMessage(String(e));
     }
   }
 
-  const downloadSVGData = useCallback(async function () {
-    try {
-        const acpr = await getProvider();
-        if (acpr) {
-          const prov = acpr[1];
-          const rakugakiNFT = await getRakugakiNFT(prov);
-          const d = await rakugakiNFT
-            .tokenURI(calculateUint256ID(tokenID));
-          setSVGData(JSON.parse(d).image);
-        }
-      } catch (e) {
-        if (ethers.isError(e, "CALL_EXCEPTION")) {
-          if (e.data !== null) {
+  const downloadSVGData = useCallback(
+    async function () {
+      const acpr = await getProvider();
+      if (acpr) {
+        const prov = acpr[1];
+        const rakugakiNFT = await getRakugakiNFT(prov);
+        try {
+          await rakugakiNFT.mint.estimateGas(
+            calculateUint256ID(tokenID),
+            [],
+            [],
+            "0x0000000000000000000000000000000000000000",
+            "0x0000000000000000000000000000000000000000",
+            "0x0000000000000000000000000000000000000000",
+          );
+          setSVGData("");
+        } catch (e) {
+          try {
+            const d = await rakugakiNFT.tokenURI(calculateUint256ID(tokenID));
+            setSVGData(JSON.parse(d).image);
+          } catch (e) {
             setSVGData("genfail.png");
-          } else {
-            setSVGData("");
           }
         }
-    }
-  }, [tokenID]);
+      }
+    },
+    [tokenID],
+  );
 
   useEffect(() => {
     downloadSVGData();
@@ -124,9 +137,7 @@ function Kasane() {
 
   return (
     <Stack direction="column" spacing={2} sx={{ p: 2 }}>
-      <Typography variant="h4">
-        Make Layers
-      </Typography>
+      <Typography variant="h4">Make Layers</Typography>
       <TextField
         color="secondary"
         label="Token ID"
@@ -151,57 +162,64 @@ function Kasane() {
         </IconButton>
       </Stack>
       <ShowHide in={Boolean(svgData)}>
-        <img alt={svgData !== "genfail.png" ? 'full on-chain NFT svg data' : 'failed to generate SVG data !'} src={svgData} />
+        <img
+          alt={
+            svgData !== "genfail.png"
+              ? "full on-chain NFT svg data"
+              : "failed to generate SVG data !"
+          }
+          src={svgData}
+        />
       </ShowHide>
       <ShowHide in={!Boolean(svgData)}>
-      <Stack direction="column" spacing={2} sx={{ p: 0 }}>
-      <TextField
-        color="secondary"
-        label="Other Data"
-        variant="outlined"
-        value={otherData}
-        onChange={(e) => setOtherData(e.target.value)}
-      />
-      <TextField
-        color="secondary"
-        label="Layers"
-        variant="outlined"
-        value={layers}
-        onChange={(e) => setLayers(e.target.value)}
-      />
-      <TextField
-        color="secondary"
-        label="Serial Code"
-        variant="outlined"
-        value={serial}
-        onChange={(e) => setSerial(e.target.value)}
-      />
+        <Stack direction="column" spacing={2} sx={{ p: 0 }}>
+          <TextField
+            color="secondary"
+            label="Other Data"
+            variant="outlined"
+            value={otherData}
+            onChange={(e) => setOtherData(e.target.value)}
+          />
+          <TextField
+            color="secondary"
+            label="Layers"
+            variant="outlined"
+            value={layers}
+            onChange={(e) => setLayers(e.target.value)}
+          />
+          <TextField
+            color="secondary"
+            label="Serial Code"
+            variant="outlined"
+            value={serial}
+            onChange={(e) => setSerial(e.target.value)}
+          />
 
-      <FormControl fullWidth>
-        <InputLabel color="secondary" id="demo-simple-select-label">
-          SVG Generator
-        </InputLabel>
-        <Select
-          color="secondary"
-          value={generator}
-          onChange={(e) => setGenerator(e.target.value)}
-          label="SVG Generator"
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-        >
-          {addressChoice()}
-        </Select>
-      </FormControl>
-      <Button
-        sx={{ p: 1 }}
-        component="label"
-        variant="contained"
-        color="secondary"
-        onClick={handleKasaneButton}
-      >
-        Kasaneru
-      </Button>
-      </Stack>
+          <FormControl fullWidth>
+            <InputLabel color="secondary" id="demo-simple-select-label">
+              SVG Generator
+            </InputLabel>
+            <Select
+              color="secondary"
+              value={generator}
+              onChange={(e) => setGenerator(e.target.value)}
+              label="SVG Generator"
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+            >
+              {addressChoice()}
+            </Select>
+          </FormControl>
+          <Button
+            sx={{ p: 1 }}
+            component="label"
+            variant="contained"
+            color="secondary"
+            onClick={handleKasaneButton}
+          >
+            Kasaneru
+          </Button>
+        </Stack>
       </ShowHide>
       <ShowHide in={Boolean(errorMessage)}>
         <Alert severity="error">
